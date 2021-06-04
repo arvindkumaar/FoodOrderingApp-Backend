@@ -4,14 +4,35 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="519c662f-4a98-49f5-958f-0d74a986f5f0" name="Default Changelist" comment="" />
+    <list default="true" id="519c662f-4a98-49f5-958f-0d74a986f5f0" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FoodOrderingApp-api/FoodOrderingApp-api.iml" beforeDir="false" afterPath="$PROJECT_DIR$/FoodOrderingApp-api/FoodOrderingApp-api.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FoodOrderingApp-api/src/main/java/com/upgrad/FoodOrderingApp/api/controller/CustomerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/FoodOrderingApp-api/src/main/java/com/upgrad/FoodOrderingApp/api/controller/CustomerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FoodOrderingApp-api/target/classes/.swagger-codegen-ignore" beforeDir="false" afterPath="$PROJECT_DIR$/FoodOrderingApp-api/target/classes/.swagger-codegen-ignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FoodOrderingApp-db/src/main/resources/config/localhost.properties" beforeDir="false" afterPath="$PROJECT_DIR$/FoodOrderingApp-db/src/main/resources/config/localhost.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FoodOrderingApp-service/FoodOrderingApp-service.iml" beforeDir="false" afterPath="$PROJECT_DIR$/FoodOrderingApp-service/FoodOrderingApp-service.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FoodOrderingApp-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/FoodOrderingApp-service/pom.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="ProjectId" id="1tQToGQXRw0TmvR7wWpdEVudK98" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -21,8 +42,41 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Food-Ordering-App-Backend-master/Food-Ordering-App-Backend-master" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Upgrad\Full Stack Development Capstone\Capstone - Part 1 - Backend Development\FoodOrderingAppBackend-STUB\FoodOrderingAppBackend-STUB\FoodOrderingApp-service\target" />
+      <recent name="D:\Upgrad\Full Stack Development Capstone\Capstone - Part 1 - Backend Development\FoodOrderingAppBackend-STUB\FoodOrderingAppBackend-STUB\FoodOrderingApp-service\src\main\java\com\upgrad\FoodOrderingApp\service\dao" />
+      <recent name="D:\Upgrad\Full Stack Development Capstone\Capstone - Part 1 - Backend Development\FoodOrderingAppBackend-STUB\FoodOrderingAppBackend-STUB\FoodOrderingApp-service\src\main\java\com\upgrad\FoodOrderingApp\service\businness" />
+      <recent name="D:\Upgrad\Full Stack Development Capstone\Capstone - Part 1 - Backend Development\FoodOrderingAppBackend-STUB\FoodOrderingAppBackend-STUB\FoodOrderingApp-db" />
+      <recent name="D:\Upgrad\Full Stack Development Capstone\Capstone - Part 1 - Backend Development\FoodOrderingAppBackend-STUB\FoodOrderingAppBackend-STUB\FoodOrderingApp-api\target" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Upgrad\Full Stack Development Capstone\Capstone - Part 1 - Backend Development\FoodOrderingAppBackend-STUB\FoodOrderingAppBackend-STUB\FoodOrderingApp-api\target\generated-sources" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.upgrad.FoodOrderingApp.service.entity" />
+      <recent name="io.swagger.api" />
+      <recent name="com.upgrad.FoodOrderingApp.api.model" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -33,10 +87,23 @@
       <option name="presentableId" value="Default" />
       <updated>1622700487061</updated>
       <workItem from="1622700489239" duration="1005000" />
+      <workItem from="1622786048850" duration="1024000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>
