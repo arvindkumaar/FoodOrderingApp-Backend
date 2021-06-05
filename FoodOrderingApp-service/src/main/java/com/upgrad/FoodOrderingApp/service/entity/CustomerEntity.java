@@ -1,9 +1,6 @@
 package com.upgrad.FoodOrderingApp.service.entity;
 
-import org.apache.commons.lang3.builder.HashCodeBuilder;
-import org.apache.commons.lang3.builder.ToStringBuilder;
-import org.apache.commons.lang3.builder.ToStringExclude;
-import org.apache.commons.lang3.builder.ToStringStyle;
+import org.apache.commons.lang3.builder.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -15,7 +12,6 @@ import java.io.Serializable;
 @NamedQueries(
         {
                 @NamedQuery(name = "customerByUuid", query = "select c from CustomerEntity c where c.uuid = :uuid"),
-                @NamedQuery(name = "customerById", query = "select c from CustomerEntity c where c.id = :id"),
                 @NamedQuery(name = "customerByContactNumber", query = "select c from CustomerEntity c where c.contactNumber = :contactNumber"),
                 @NamedQuery(name = "customerByEmail", query = "select c from CustomerEntity c where c.email =:email"),
                 //@NamedQuery(name="deleteUser",query = "delete from UserEntity u where u.uuid=:uuid")
