@@ -27,7 +27,7 @@ public class OrderService {
     private CouponService couponService;
 
     @Autowired
-    private AddressService addressService;
+    private AddressBusinessService addressService;
 
     @Autowired
     private PaymentService paymentService;
