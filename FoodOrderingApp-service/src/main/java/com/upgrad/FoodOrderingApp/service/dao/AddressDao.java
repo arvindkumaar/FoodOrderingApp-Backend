@@ -1,43 +1,48 @@
 package com.upgrad.FoodOrderingApp.service.dao;
 
-import com.upgrad.FoodOrderingApp.service.entity.AddressEntity;
+import com.upgrad.FoodOrderingApp.service.entity.*;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
+import java.util.List;
 
 @Repository
-public class AddressDao {
+public class OrderDao {
 
     @PersistenceContext
     private EntityManager entityManager;
 
-    public AddressEntity getAddressById(final Long addressId) {
+    public CouponEntity getCouponByName(String couponName) {
         try {
-            return entityManager.createNamedQuery("addressById", AddressEntity.class).setParameter("id", addressId)
+            return entityManager.createNamedQuery("couponByName", CouponEntity.class).setParameter("couponName", couponName)
                     .getSingleResult();
         } catch(NoResultException nre) {
             return null;
         }
-
     }
 
-    public AddressEntity createAddress(AddressEntity addressEntity) {
-        entityManager.persist(addressEntity);
-        return addressEntity;
-    }
-
-    public AddressEntity deleteAddressByUuid(final String uuid) {
+    public List<OrdersEntity> getCustomerOrders(CustomerEntity customerEntity) {
         try {
-            AddressEntity ae = entityManager.createNamedQuery("addressByUuid", AddressEntity.class).setParameter("uuid", uuid)
-                    .getSingleResult();
-            ae.setActive(0);
-            entityManager.persist(ae);
-            return ae;
-        } catch (NoResultException nre) {
+            return entityManager.createNamedQuery("ordersByCustomer", OrdersEntity.class).setParameter("customer", customerEntity)
+                    .getResultList();
+        } catch(NoResultException nre) {
             return null;
         }
     }
 
+    public OrdersEntity saveOrder(OrdersEntity ordersEntity) {
+        entityManager.persist(ordersEntity);
+        return ordersEntity;
+    }
+
+    public List<OrdersEntity> getOrdersByRestaurant(final Long restaurantId) {
+        try {
+            return entityManager.createNamedQuery("ordersByRestaurant", OrdersEntity.class)
+                    .setParameter("restaurant", restaurantId).getResultList();
+        } catch (NoResultException nre) {
+            return null;
+        }
+    }
 }

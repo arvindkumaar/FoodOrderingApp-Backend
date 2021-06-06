@@ -1,40 +1,42 @@
 package com.upgrad.FoodOrderingApp.service.entity;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "restaurant_category")
-@NamedQueries({
-        @NamedQuery(name = "findRestaurantByCategoryId", query = "select r from RestaurantCategoryEntity r where category.uuid = :categoryUUID "),
-})
-public class RestaurantCategoryEntity {
+@NamedQueries(
+        {
+                @NamedQuery(name = "restaurantsByCategoryId", query = "select r from RestaurantCategoryEntity r where r.category.id=:id")
+        }
+)
+
+public class RestaurantCategoryEntity implements Serializable {
+
     @Id
     @Column(name = "ID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private long id;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "CATEGORY_ID")
-    private CategoryEntity category;
-
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "RESTAURANT_ID")
     private RestaurantEntity restaurant;
 
-    public Integer getId() {
+    @ManyToOne
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @JoinColumn(name = "CATEGORY_ID")
+    private CategoryEntity category;
+
+    public long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(long id) {
         this.id = id;
-    }
-
-    public CategoryEntity getCategory() {
-        return category;
-    }
-
-    public void setCategory(CategoryEntity category) {
-        this.category = category;
     }
 
     public RestaurantEntity getRestaurant() {
@@ -45,4 +47,11 @@ public class RestaurantCategoryEntity {
         this.restaurant = restaurant;
     }
 
+    public CategoryEntity getCategory() {
+        return category;
+    }
+
+    public void setCategory(CategoryEntity category) {
+        this.category = category;
+    }
 }

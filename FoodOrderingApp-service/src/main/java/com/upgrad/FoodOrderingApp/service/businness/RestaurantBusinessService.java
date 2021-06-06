@@ -28,6 +28,9 @@ public class RestaurantBusinessService {
     @Autowired
     private CustomerDao customerDao;
 
+    @Autowired
+    private CustomerAdminBusinessService customerAdminBusinessService;
+
     // A Method is for getAllRestaurants endpoint
     public List<RestaurantEntity> getAllRestaurants() {
         return restaurantDao.getAllRestaurants();
@@ -39,8 +42,8 @@ public class RestaurantBusinessService {
     }
 
     // A Method which takes the categoryUUID as parameter for  getRestaurantByCategoryId endpoint
-    public List<RestaurantCategoryEntity> getRestaurantByCategoryId(String categoryUUID) {
-        return restaurantDao.getRestaurantByCategoryId(categoryUUID);
+    public List<RestaurantCategoryEntity> getRestaurantByCategoryId(final Long categoryID) {
+        return restaurantDao.getRestaurantByCategoryId(categoryID);
     }
 
     // A Method which takes the restaurantUUID as parameter for  getRestaurantByUUId endpoint
@@ -54,20 +57,8 @@ public class RestaurantBusinessService {
 
         final ZonedDateTime now = ZonedDateTime.now();
 
-        //get the customerAuthToken details from customerDao
-        CustomerAuthTokenEntity customerAuthTokenEntity = customerDao.getCustomerAuthToken(authorizationToken);
-
-        // Throw AuthorizationFailedException if the customer is not authorized
-        if (customerAuthTokenEntity == null) {
-            throw new AuthorizationFailedException("ATHR-001", "Customer is not Logged in.");
-            // Throw AuthorizationFailedException if the customer is logged out
-        } else if (customerAuthTokenEntity.getLogoutAt() != null) {
-            throw new AuthorizationFailedException("ATHR-002", "Customer is logged out. Log in again to access this endpoint.");
-            // Throw AuthorizationFailedException if the customer session is expired
-        } else if (now.isAfter(customerAuthTokenEntity.getExpiresAt()) ) {
-            throw new AuthorizationFailedException("ATHR-003", "Your session is expired. Log in again to access this endpoint.");
-        }
-
+        // Validates the customer using the authorizationToken
+        customerAdminBusinessService.validateAccessToken(authorizationToken);
 
         // Throw exception if path variable(restaurant_id) is empty
         if(restaurant_id == null || restaurant_id.isEmpty() || restaurant_id.equalsIgnoreCase("\"\"")){
@@ -86,12 +77,13 @@ public class RestaurantBusinessService {
             throw new InvalidRatingException("IRE-001", "Restaurant should be in the range of 1 to 5");
         }
 
-
-        // Now set the updated password and attach it to the customerEntity
-        restaurantEntity.setCustomerRating(new BigDecimal(customerRating));
+        // Now calculate new customer rating  and set the updated rating and attach it to the restaurantEntity
+        BigDecimal oldRatingCalculation = (restaurantEntity.getCustomerRating().multiply(new BigDecimal(restaurantEntity.getNumCustomersRated())));
+        BigDecimal calculatedRating = (oldRatingCalculation.add(new BigDecimal(customerRating))).divide(new BigDecimal(restaurantEntity.getNumCustomersRated() + 1));
+        restaurantEntity.setCustomerRating(calculatedRating);
         restaurantEntity.setNumCustomersRated(restaurantEntity.getNumCustomersRated() + 1);
 
-        //called customerDao to merge the content and update in the database
+        //called restaurantDao to merge the content and update in the database
         restaurantDao.updateRestaurant(restaurantEntity);
         return restaurantEntity;
     }
