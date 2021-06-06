@@ -1,43 +1,78 @@
 package com.upgrad.FoodOrderingApp.service.dao;
 
-import com.upgrad.FoodOrderingApp.service.entity.AddressEntity;
 import com.upgrad.FoodOrderingApp.service.entity.CustomerAddressEntity;
+import com.upgrad.FoodOrderingApp.service.entity.CustomerAuthTokenEntity;
 import com.upgrad.FoodOrderingApp.service.entity.CustomerEntity;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
-import java.util.ArrayList;
-import java.util.List;
 
 @Repository
-public class CustomerAddressDao {
+public class CustomerDao {
 
     @PersistenceContext
     private EntityManager entityManager;
 
+    public CustomerEntity createCustomer(CustomerEntity customerEntity) {
+        entityManager.persist(customerEntity);
+        return customerEntity;
+    }
 
-    public List<AddressEntity> getAddressForCustomerByUuid(final String uuid) {
+    public CustomerEntity getCustomerByUuid(final String uuid) {
         try {
-            CustomerEntity customerEntity = entityManager.createQuery("SELECT c FROM CustomerEntity c WHERE c.uuid = :uuid", CustomerEntity.class)
-                    .setParameter("uuid", uuid).getSingleResult();
+            return entityManager.createNamedQuery("customerByUuid", CustomerEntity.class).setParameter("uuid", uuid)
+                    .getSingleResult();
+        } catch(NoResultException nre) {
+            return null;
+        }
+    }
 
-            List<CustomerAddressEntity> customerAddressEntities = entityManager.createQuery("SELECT ca FROM CustomerAddressEntity ca WHERE ca.customerId = :id", CustomerAddressEntity.class)
-                    .setParameter("id", customerEntity.getId()).getResultList();
-            List<Long> ids = new ArrayList<>();
+    public CustomerEntity getCustomerByEmail(final String customerEmail) {
+        try {
+            return entityManager.createNamedQuery("customerByEmail", CustomerEntity.class).setParameter("email", customerEmail)
+                    .getSingleResult();
+        } catch(NoResultException nre) {
+            return null;
+        }
+    }
 
-            for (CustomerAddressEntity cae : customerAddressEntities) {
-                ids.add(cae.getAddressId());
-            }
+    public CustomerEntity getCustomerByContactNumber(final String customerContactNumber) {
+        try {
+            return entityManager.createNamedQuery("customerByContactNumber", CustomerEntity.class).setParameter("contactNumber", customerContactNumber)
+                    .getSingleResult();
+        } catch(NoResultException nre) {
+            return null;
+        }
+    }
 
-            List<AddressEntity> addressEntitiesList = entityManager.createQuery(
-                    "SELECT a FROM AddressEntity a WHERE a.id in :addressIds AND a.active = 1", AddressEntity.class)
-                    .setParameter("addressIds", ids).getResultList();
+    ////////////////////////created for customer-login/////////////////////
+    public CustomerAuthTokenEntity createAuthToken(final CustomerAuthTokenEntity customerAuthTokenEntity) {
+        entityManager.persist(customerAuthTokenEntity);
+        return customerAuthTokenEntity;
+    }
 
-            return addressEntitiesList;
-        } catch (NoResultException nre) {
-            return new ArrayList<>();
+    public void updateCustomer(final CustomerEntity updatedCustomerEntity) {
+        entityManager.merge(updatedCustomerEntity);
+    }
+
+    public void updateCustomerAuth(final CustomerAuthTokenEntity customerAuthTokenEntity) {
+        entityManager.merge(customerAuthTokenEntity);
+    }
+
+    public CustomerEntity deleteCustomer(final CustomerEntity customerEntity){
+        entityManager.remove(customerEntity);
+        return customerEntity;
+    }
+
+    ////////////////////////////////////////////////////////////////////////////
+    public CustomerAuthTokenEntity getCustomerAuthToken(final String accessToken) {
+        try {
+            return entityManager.createNamedQuery("customerAuthTokenByAccessToken", CustomerAuthTokenEntity.class)
+                    .setParameter("accessToken", accessToken).getSingleResult();
+        } catch(NoResultException nre) {
+            return null;
         }
     }
 }
