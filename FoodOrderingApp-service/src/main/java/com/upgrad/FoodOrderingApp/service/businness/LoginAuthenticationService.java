@@ -21,11 +21,11 @@ public class LoginAuthenticationService {
     private PasswordCryptographyProvider cryptographyProvider;
 
     @Transactional(propagation = Propagation.REQUIRED)
-    public CustomerAuthTokenEntity authenticate(final String contactNumber, final String password) throws AuthenticationFailedException {
+    public CustomerAuthTokenEntity authenticate(final String contactNumber , final String password) throws AuthenticationFailedException {
         //Call the getCustomerByContactNumber method in CustomerDao class for CustomerDao object and pass contactNumber as argument
         // Receive the value returned by getCustomerByContactNumber() method in CustomerEntity type object(name it as customerEntity)
         CustomerEntity customerEntity = customerDao.getCustomerByContactNumber(contactNumber);
-        if (customerEntity == null) {
+        if(customerEntity == null) {
             throw new AuthenticationFailedException("ATH-001", "This contact number has not been registered!");
         }
 
@@ -39,7 +39,7 @@ public class LoginAuthenticationService {
         //Now encryptedPassword contains the password entered by the customer in encrypted form
         //And customerEntity.getPassword() gives the password stored in the database in encrypted form
         //We compare both the passwords (Note that in this Assessment we are assuming that the credentials are correct)
-        if (encryptedPassword.equals(customerEntity.getPassword())) {
+        if(encryptedPassword.equals(customerEntity.getPassword())) {
             //Implementation of JwtTokenProvider class
             JwtTokenProvider jwtTokenProvider = new JwtTokenProvider(encryptedPassword);
             //Now CustomerAuthTokenEntity type object is to be persisted in a database
@@ -69,10 +69,14 @@ public class LoginAuthenticationService {
             customerDao.updateCustomer(customerEntity);
             return customerAuthTokenEntity;
 
-        } else {
+        }
+        else{
             //throw exception
             throw new AuthenticationFailedException("ATH-002", "Invalid Credentials");
         }
 
     }
+
+
+
 }
