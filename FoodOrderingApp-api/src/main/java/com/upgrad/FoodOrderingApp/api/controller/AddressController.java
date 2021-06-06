@@ -2,6 +2,7 @@ package com.upgrad.FoodOrderingApp.api.controller;
 
 import com.upgrad.FoodOrderingApp.api.model.*;
 import com.upgrad.FoodOrderingApp.service.businness.AddressService;
+import com.upgrad.FoodOrderingApp.service.businness.CustomerAdminBusinessService;
 import com.upgrad.FoodOrderingApp.service.entity.AddressEntity;
 import com.upgrad.FoodOrderingApp.service.entity.StateEntity;
 import com.upgrad.FoodOrderingApp.service.exception.AddressNotFoundException;
@@ -22,10 +23,14 @@ public class AddressController {
     @Autowired
     private AddressService addressService;
 
+    @Autowired
+    private CustomerAdminBusinessService customerAdminBusinessService;
+
     @RequestMapping(method = RequestMethod.POST, path = "/address", consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public ResponseEntity<SaveAddressResponse> saveAddress(
             @RequestHeader(value = "authorization", required = true) String authorization,
-            @RequestBody(required = false) final SaveAddressRequest saveAddressRequest) throws AuthorizationFailedException, SaveAddressException, AddressNotFoundException {
+            @RequestBody(required = false) final SaveAddressRequest saveAddressRequest) throws AuthorizationFailedException,
+            SaveAddressException, AddressNotFoundException {
         // Authentication Token
         String[] bearerToken = authorization.split("Bearer ");
 
@@ -34,7 +39,8 @@ public class AddressController {
         addressEntity.setFlatBuildingNumber(saveAddressRequest.getFlatBuildingName());
         addressEntity.setLocality(saveAddressRequest.getLocality());
         addressEntity.setPincode(saveAddressRequest.getPincode());
-        addressEntity.setStateId(addressService.getStateByUUID(saveAddressRequest.getStateUuid()).getId());
+        System.out.println(saveAddressRequest.getStateUuid());
+        //addressEntity.setStateId(addressService.getStateByUUID(saveAddressRequest.getStateUuid()).getId());
         addressEntity.setUuid(UUID.randomUUID().toString());
         addressEntity.setActive(1L);
 
