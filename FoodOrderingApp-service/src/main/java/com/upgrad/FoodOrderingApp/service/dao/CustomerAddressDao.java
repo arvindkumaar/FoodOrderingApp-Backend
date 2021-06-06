@@ -17,18 +17,14 @@ public class CustomerAddressDao {
     @PersistenceContext
     private EntityManager entityManager;
 
-    public CustomerAddressEntity createCustomerAddress(CustomerAddressEntity customerAddressEntity) {
-        entityManager.persist(customerAddressEntity);
-        return customerAddressEntity;
-    }
 
     public List<AddressEntity> getAddressForCustomerByUuid(final String uuid) {
         try {
-            CustomerEntity customerEntity = entityManager.createNamedQuery("customerByUuid", CustomerEntity.class)
+            CustomerEntity customerEntity = entityManager.createQuery("SELECT c FROM CustomerEntity c WHERE c.uuid = :uuid", CustomerEntity.class)
                     .setParameter("uuid", uuid).getSingleResult();
 
-            List<CustomerAddressEntity> customerAddressEntities = entityManager.createNamedQuery("customerAddressesListByCustomerId", CustomerAddressEntity.class)
-                    .setParameter("customer", customerEntity).getResultList();
+            List<CustomerAddressEntity> customerAddressEntities = entityManager.createQuery("SELECT ca FROM CustomerAddressEntity ca WHERE ca.customerId = :id", CustomerAddressEntity.class)
+                    .setParameter("id", (long) customerEntity.getId()).getResultList();
 
             if (customerAddressEntities.size() == 0) {
                 return null;
@@ -37,7 +33,7 @@ public class CustomerAddressDao {
             List<Long> ids = new ArrayList<>();
 
             for (CustomerAddressEntity cae : customerAddressEntities) {
-                ids.add(cae.getAddress().getId());
+                ids.add(cae.getAddressId());
             }
 
             List<AddressEntity> addressEntitiesList = entityManager.createQuery(
