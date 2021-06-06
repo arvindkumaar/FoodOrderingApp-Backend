@@ -36,7 +36,7 @@ public class AddressController {
 
         AddressEntity addressEntity = new AddressEntity();
         addressEntity.setCity(saveAddressRequest.getCity());
-        addressEntity.setFlatBldgNumber(saveAddressRequest.getFlatBuildingName());
+        addressEntity.setFlatBuildingNumber(saveAddressRequest.getFlatBuildingName());
         addressEntity.setLocality(saveAddressRequest.getLocality());
         addressEntity.setPincode(saveAddressRequest.getPincode());
         System.out.println(saveAddressRequest.getStateUuid());
@@ -63,7 +63,7 @@ public class AddressController {
 
             AddressListState addressListState = new AddressListState();
             addressListState.setStateName(se.getStateName());
-            AddressList addressList = new AddressList().city(ae.getCity()).flatBuildingName(ae.getFlatBldgNumber())
+            AddressList addressList = new AddressList().city(ae.getCity()).flatBuildingName(ae.getFlatBuildingNumber())
                     .locality(ae.getLocality()).pincode(ae.getPincode()).state(addressListState);
             addressListResponse.addAddressesItem(addressList);
         }

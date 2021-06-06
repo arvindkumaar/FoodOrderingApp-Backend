@@ -1,11 +1,16 @@
 package com.upgrad.FoodOrderingApp.service.entity;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
+import javax.persistence.*;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+
 import javax.validation.constraints.Size;
 import java.io.Serializable;
 
@@ -13,7 +18,9 @@ import java.io.Serializable;
 @Table(name = "address")
 @NamedQueries(
         {
-                @NamedQuery(name = "addressById", query = "select a from AddressEntity a where a.id = :id"),
+                @NamedQuery(name = "addressByUuid", query = "select a from AddressEntity a where a.uuid =:uuid"),
+                @NamedQuery(name = "allAddresses", query = "select a from AddressEntity a "),
+                @NamedQuery(name = "addressById", query = "select a from AddressEntity a where a.id=:id")
         }
 )
 
@@ -22,39 +29,34 @@ public class AddressEntity implements Serializable {
     @Id
     @Column(name = "ID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private long id;
 
-    @Column(name = "UUID")
-    @NotNull
+    @Column(name = "uuid")
     @Size(max = 200)
     private String uuid;
 
     @Column(name = "FLAT_BUIL_NUMBER")
-    @NotNull
     @Size(max = 255)
-    private String flatBldgNumber;
+    private String flatBuildingNumber;
 
     @Column(name = "LOCALITY")
-    @NotNull
     @Size(max = 255)
     private String locality;
 
     @Column(name = "CITY")
-    @NotNull
     @Size(max = 30)
     private String city;
 
     @Column(name = "PINCODE")
-    @NotNull
     @Size(max = 30)
     private String pincode;
 
     @ManyToOne
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "STATE_ID")
     private StateEntity state;
 
-    @Column(name = "ACTIVE")
-    @NotNull
+    @Column(name = "active")
     private Integer active;
 
     public Long getId() {
@@ -73,12 +75,12 @@ public class AddressEntity implements Serializable {
         this.uuid = uuid;
     }
 
-    public String getFlatBldgNumber() {
-        return flatBldgNumber;
+    public String getFlatBuildingNumber() {
+        return flatBuildingNumber;
     }
 
-    public void setFlatBldgNumber(String flatBldgNumber) {
-        this.flatBldgNumber = flatBldgNumber;
+    public void setFlatBuildingNumber(String flatBuildingNumber) {
+        this.flatBuildingNumber = flatBuildingNumber;
     }
 
     public String getLocality() {
@@ -120,15 +122,4 @@ public class AddressEntity implements Serializable {
     public void setActive(Integer active) {
         this.active = active;
     }
-
-    @Override
-    public int hashCode() {
-        return new HashCodeBuilder().append(this).hashCode();
-    }
-
-    @Override
-    public String toString() {
-        return ToStringBuilder.reflectionToString(this, ToStringStyle.MULTI_LINE_STYLE);
-    }
-
 }

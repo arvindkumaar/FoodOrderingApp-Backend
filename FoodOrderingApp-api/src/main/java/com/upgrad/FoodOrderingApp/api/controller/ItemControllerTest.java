@@ -17,7 +17,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import java.util.Collections;
 import java.util.UUID;
-import static com.upgrad.FoodOrderingApp.service.common.ItemType.NON_VEG;
+import static com.upgrad.FoodOrderingApp.service.common.ItemTypeEnum.NON_VEG;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;

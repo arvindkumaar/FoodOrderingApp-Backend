@@ -1,10 +1,10 @@
 package com.upgrad.FoodOrderingApp.service.businness;
 
 import com.upgrad.FoodOrderingApp.service.dao.AddressDao;
+import com.upgrad.FoodOrderingApp.service.entity.AddressEntity;
 import com.upgrad.FoodOrderingApp.service.dao.CustomerAddressDao;
 import com.upgrad.FoodOrderingApp.service.dao.CustomerDao;
 import com.upgrad.FoodOrderingApp.service.dao.StateDao;
-import com.upgrad.FoodOrderingApp.service.entity.AddressEntity;
 import com.upgrad.FoodOrderingApp.service.entity.CustomerAuthTokenEntity;
 import com.upgrad.FoodOrderingApp.service.entity.StateEntity;
 import com.upgrad.FoodOrderingApp.service.exception.AddressNotFoundException;
@@ -22,22 +22,29 @@ import java.util.UUID;
 public class AddressService {
 
     @Autowired
+    private AddressDao addressDao;
+
+    @Autowired
     private CustomerDao customerDao;
 
     @Autowired
     private CustomerAddressDao customerAddressDao;
 
     @Autowired
-    private AddressDao addressDao;
-
-    @Autowired
     private StateDao stateDao;
 
+    @Transactional
+    public AddressEntity getAddressById(final Long addressId) {
+        return addressDao.getAddressById(addressId);
+    }
+
+    @Transactional
     public StateEntity getStateByUUID(String uuid) {
         return stateDao.getStateByUuid(uuid);
     }
 
-    public StateEntity getStateById(Long stateId) {
+    @Transactional
+    public StateEntity getStateById(Integer stateId) {
         return stateDao.getStateById(stateId);
     }
 
@@ -47,7 +54,7 @@ public class AddressService {
 
         if (addressEntity.getCity() == null || addressEntity.getCity().isEmpty() ||
                 addressEntity.getState().getId() == null ||
-                addressEntity.getFlatBldgNumber() == null || addressEntity.getFlatBldgNumber().isEmpty() ||
+                addressEntity.getFlatBuildingNumber() == null || addressEntity.getFlatBuildingNumber().isEmpty() ||
                 addressEntity.getLocality() == null || addressEntity.getLocality().isEmpty() ||
                 addressEntity.getPincode() == null || addressEntity.getPincode().isEmpty() ||
                 addressEntity.getUuid() == null || addressEntity.getUuid().isEmpty()) {

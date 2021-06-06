@@ -1,6 +1,8 @@
 package com.upgrad.FoodOrderingApp.service.entity;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
+import java.io.Serializable;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.ArrayList;
@@ -10,26 +12,24 @@ import java.util.List;
 @Table(name = "category")
 @NamedQueries(
         {
-                @NamedQuery(name = "categoryById", query = "select c from CategoryEntity c where c.id = :id"),
-                @NamedQuery(name = "categoryByUUId", query = "select c from CategoryEntity c where c.uuid = :categoryUUID"),
+                @NamedQuery(name = "categoryByUuid", query = "select c from CategoryEntity c where c.uuid=:uuid"),
+                @NamedQuery(name = "categoryById", query = "select c from CategoryEntity c where c.id=:id"),
                 @NamedQuery(name = "allCategories", query = "select c from CategoryEntity c order by c.categoryName")
         }
 )
-public class CategoryEntity {
+
+public class CategoryEntity implements Serializable {
 
     @Id
     @Column(name = "ID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private long id;
 
     @Column(name = "UUID")
-    @NotNull
     @Size(max = 200)
     private String uuid;
 
     @Column(name = "CATEGORY_NAME")
-    @NotNull
-    @Size(max = 255)
     private String categoryName;
 
     @OneToMany(cascade = CascadeType.ALL)
@@ -39,8 +39,12 @@ public class CategoryEntity {
     )
     private List<ItemEntity> itemEntities =new ArrayList<>();
 
-    public Integer getId() {
+    public long getId() {
         return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getUuid() {
@@ -51,6 +55,14 @@ public class CategoryEntity {
         this.uuid = uuid;
     }
 
+    public String getCategoryName() {
+        return categoryName;
+    }
+
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
+    }
+
     public List<ItemEntity> getItemEntities() {
         return itemEntities;
     }
@@ -59,15 +71,4 @@ public class CategoryEntity {
         this.itemEntities = itemEntities;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getCategoryName() {
-        return categoryName;
-    }
-
-    public void setCategoryName(String categoryName) {
-        this.categoryName = categoryName;
-    }
 }

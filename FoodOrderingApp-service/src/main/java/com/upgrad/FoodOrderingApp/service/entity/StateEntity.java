@@ -1,5 +1,5 @@
-package com.upgrad.FoodOrderingApp.service.entity;
 
+import javax.persistence.*;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
@@ -13,8 +13,10 @@ import java.io.Serializable;
 @Table(name = "state")
 @NamedQueries(
         {
-                @NamedQuery(name = "stateById", query = "select s from StateEntity s where s.id = :id"),
-                @NamedQuery(name = "stateByUuid", query = "select s from StateEntity s where s.uuid = :uuid")
+                @NamedQuery(name = "allStates", query = "select s from StateEntity s"),
+                @NamedQuery(name = "stateByUuid",query="select s from StateEntity s where s.uuid=:uuid"),
+                @NamedQuery(name = "stateById", query = "select s from StateEntity s where s.id=:id")
+
         }
 )
 
@@ -24,7 +26,7 @@ public class StateEntity implements Serializable {
     @Id
     @Column(name = "ID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
 
     @Column(name = "UUID")
     @NotNull
@@ -32,15 +34,14 @@ public class StateEntity implements Serializable {
     private String uuid;
 
     @Column(name = "STATE_NAME")
-    @NotNull
     @Size(max = 30)
     private String stateName;
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

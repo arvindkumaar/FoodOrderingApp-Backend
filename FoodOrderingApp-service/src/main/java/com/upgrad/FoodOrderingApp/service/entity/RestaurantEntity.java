@@ -3,6 +3,7 @@ package com.upgrad.FoodOrderingApp.service.entity;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
+
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
@@ -13,7 +14,6 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.HashSet;
 import java.util.Set;
-import java.util.UUID;
 
 @Entity
 @Table(name = "restaurant")
@@ -30,7 +30,7 @@ public class RestaurantEntity implements Serializable {
     @Id
     @Column(name = "ID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private long id;
 
     @Column(name = "UUID")
     @NotNull
@@ -76,26 +76,13 @@ public class RestaurantEntity implements Serializable {
             joinColumns = @JoinColumn(name = "restaurant_id", referencedColumnName="id", nullable = false),
             inverseJoinColumns = @JoinColumn(name = "item_id", referencedColumnName="id", nullable = false)
     )
-    private Set<ItemEntity> itemEntities = new HashSet<>();
 
-    public Set<CategoryEntity> getCategoryEntities() {
-        return categoryEntities;
-    }
-
-    public void setCategoryEntities(Set<CategoryEntity> categoryEntities) {
-        this.categoryEntities = categoryEntities;
-    }
-
-    public Set<ItemEntity> getItemEntities() {
-        return itemEntities;
-    }
-
-    public void setItemEntities(Set<ItemEntity> itemEntities) {
-        this.itemEntities = itemEntities;
-    }
-
-    public Integer getId() {
+    public long getId() {
         return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getUuid() {
@@ -104,10 +91,6 @@ public class RestaurantEntity implements Serializable {
 
     public void setUuid(String uuid) {
         this.uuid = uuid;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
     }
 
     public String getRestaurantName() {
@@ -156,6 +139,14 @@ public class RestaurantEntity implements Serializable {
 
     public void setAddress(AddressEntity address) {
         this.address = address;
+    }
+
+    public Set<CategoryEntity> getCategoryEntities() {
+        return categoryEntities;
+    }
+
+    public void setCategoryEntities(Set<CategoryEntity> categoryEntities) {
+        this.categoryEntities = categoryEntities;
     }
 
     @Override

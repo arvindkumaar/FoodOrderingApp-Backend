@@ -4,13 +4,28 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+import java.io.Serializable;
+
 @Entity
 @Table(name = "payment")
+@NamedQueries(
+        {
+                @NamedQuery(name = "allPaymentMethods", query = "select p from PaymentEntity p "),
+                @NamedQuery(name = "paymentById", query = "select p from PaymentEntity p where p.id=:id"),
+                @NamedQuery(name = "paymentByUuid", query = "select p from PaymentEntity p where p.uuid=:uuid"),
+        }
+)
+
+
 public class PaymentEntity {
     @Id
     @Column(name = "ID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
     @Column(name = "UUID")
     @NotNull
@@ -22,11 +37,11 @@ public class PaymentEntity {
     @Size(max = 255)
     private String paymentName;
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
