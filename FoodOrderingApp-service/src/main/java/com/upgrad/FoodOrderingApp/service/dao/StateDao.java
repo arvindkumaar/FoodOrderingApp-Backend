@@ -13,20 +13,12 @@ public class StateDao {
     @PersistenceContext
     private EntityManager entityManager;
 
-    public StateEntity getStateByUuid(final String uuid) {
+    public StateEntity getStateById(Long stateId) {
         try {
-            return entityManager.createNamedQuery("stateByUuid", StateEntity.class).setParameter("uuid", uuid)
+            return entityManager.createNamedQuery("stateById", StateEntity.class).setParameter("id", stateId)
                     .getSingleResult();
-        } catch (NoResultException nre) {
+        } catch(NoResultException nre) {
             return null;
         }
     }
-
-    public StateEntity getStateById(final Long id) {
-        try {
-            return entityManager.createNamedQuery("stateById", StateEntity.class).setParameter("id", id)
-                    .getSingleResult();
-        } catch (NoResultException nre) {
-            return null;
-        }
-    }
+}

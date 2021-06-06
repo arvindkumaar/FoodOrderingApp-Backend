@@ -1,5 +1,7 @@
 package com.upgrad.FoodOrderingApp.service.dao;
 
+import com.upgrad.FoodOrderingApp.service.entity.CouponEntity;
+import com.upgrad.FoodOrderingApp.service.entity.OrdersEntity;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -22,25 +24,11 @@ public class OrderDao {
         }
     }
 
-    public List<OrdersEntity> getCustomerOrders(CustomerEntity customerEntity) {
+    public List<OrdersEntity> getCustomerOrders(Long customerId) {
         try {
-            return entityManager.createNamedQuery("ordersByCustomer", OrdersEntity.class).setParameter("customer", customerEntity)
+            return entityManager.createNamedQuery("ordersByCustomer", OrdersEntity.class).setParameter("customer", customerId)
                     .getResultList();
         } catch(NoResultException nre) {
-            return null;
-        }
-    }
-
-    public OrdersEntity saveOrder(OrdersEntity ordersEntity) {
-        entityManager.persist(ordersEntity);
-        return ordersEntity;
-    }
-
-    public List<OrdersEntity> getOrdersByRestaurant(final RestaurantEntity restaurantEntity) {
-        try {
-            return entityManager.createNamedQuery("ordersByRestaurant", OrdersEntity.class)
-                    .setParameter("restaurant", restaurantEntity).getResultList();
-        } catch (NoResultException nre) {
             return null;
         }
     }

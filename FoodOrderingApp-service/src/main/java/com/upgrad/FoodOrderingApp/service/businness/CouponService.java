@@ -14,13 +14,8 @@ public class CouponService {
     private CouponDao couponDao;
 
     @Transactional
-    public CouponEntity getCouponById(final Long couponId) {
+    public CouponEntity getCouponById(Long couponId) {
         return couponDao.getCouponById(couponId);
-    }
-
-    @Transactional
-    public CouponEntity getCouponByUuid(final String couponUuid) {
-        return couponDao.getCouponByUuid(couponUuid);
     }
 
 }
