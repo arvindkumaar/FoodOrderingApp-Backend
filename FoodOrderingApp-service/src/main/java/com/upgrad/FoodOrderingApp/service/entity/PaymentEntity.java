@@ -5,17 +5,16 @@ import javax.validation.constraints.Size;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "customer")
+@Table(name = "payment")
 @NamedQueries(
         {
-                @NamedQuery(name = "allStates", query = "select s from StateEntity s"),
-                @NamedQuery(name = "stateByUuid",query="select s from StateEntity s where s.uuid=:uuid"),
-                @NamedQuery(name = "stateById", query = "select s from StateEntity s where s.id=:id")
+                @NamedQuery(name = "paymentByUuid", query = "select p from PaymentEntity p where p.uuid=:uuid"),
+                @NamedQuery(name = "paymentById", query = "select p from PaymentEntity p where p.id=:id"),
+                @NamedQuery(name = "paymentMethods", query = "select p from PaymentEntity p ")
         }
 )
 
-
-public class StateEntity implements Serializable {
+public class PaymentEntity implements Serializable {
 
     @Id
     @Column(name = "ID")
@@ -26,9 +25,8 @@ public class StateEntity implements Serializable {
     @Size(max = 200)
     private String uuid;
 
-    @Column(name = "STATE_NAME")
-    @Size(max = 30)
-    private String stateName;
+    @Column(name = "PAYMENT_NAME")
+    private String paymentName;
 
     public long getId() {
         return id;
@@ -46,11 +44,11 @@ public class StateEntity implements Serializable {
         this.uuid = uuid;
     }
 
-    public String getStateName() {
-        return stateName;
+    public String getPaymentName() {
+        return paymentName;
     }
 
-    public void setStateName(String stateName) {
-        this.stateName = stateName;
+    public void setPaymentName(String paymentName) {
+        this.paymentName = paymentName;
     }
 }

@@ -1,29 +1,26 @@
 package com.upgrad.FoodOrderingApp.service.entity;
 
-import org.apache.commons.lang3.builder.HashCodeBuilder;
-import org.apache.commons.lang3.builder.ToStringBuilder;
-import org.apache.commons.lang3.builder.ToStringStyle;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 @Entity
 @Table(name = "customer_address")
 @NamedQueries(
         {
-                @NamedQuery(name = "customerAddressByCustomerId", query = "select c from CustomerAddressEntity c where c.customer = :id"),
-                @NamedQuery(name = "customerAddressesListByCustomerId", query = "select c from CustomerAddressEntity c where c.customer = :customer order by c.address desc")
+                @NamedQuery(name = "customerAddressByAddressId", query = "select ca from CustomerAddressEntity ca where ca.id = :id"),
+                @NamedQuery(name = "customerAddressesListByCustomerId", query = "select ca from CustomerAddressEntity ca where ca.customer = :customer order by ca.address desc")
         }
 )
-public class CustomerAddressEntity implements Serializable {
 
+
+public class CustomerAddressEntity implements Serializable {
     @Id
     @Column(name = "ID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private long id;
 
     @ManyToOne
     @OnDelete(action = OnDeleteAction.CASCADE)
@@ -35,11 +32,11 @@ public class CustomerAddressEntity implements Serializable {
     @JoinColumn(name = "ADDRESS_ID")
     private AddressEntity address;
 
-    public Long getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -58,15 +55,4 @@ public class CustomerAddressEntity implements Serializable {
     public void setAddress(AddressEntity address) {
         this.address = address;
     }
-
-    @Override
-    public int hashCode() {
-        return new HashCodeBuilder().append(this).hashCode();
-    }
-
-    @Override
-    public String toString() {
-        return ToStringBuilder.reflectionToString(this, ToStringStyle.MULTI_LINE_STYLE);
-    }
-
 }
