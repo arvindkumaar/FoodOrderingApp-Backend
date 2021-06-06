@@ -1,4 +1,4 @@
-package com.upgrad.FoodOrderingApp.api.model;
+ackage com.upgrad.FoodOrderingApp.api.model;
 
 import java.util.Objects;
 import com.upgrad.FoodOrderingApp.api.model.ItemList;
@@ -14,7 +14,7 @@ import javax.validation.constraints.*;
  */
 @ApiModel(description = "List of items")
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2021-05-01T17:43:47.026+05:30")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2021-06-01T17:43:45.582+05:30")
 
 public class ItemListResponse extends ArrayList<ItemList>  {
 
@@ -54,4 +54,3 @@ public class ItemListResponse extends ArrayList<ItemList>  {
         return o.toString().replace("\n", "\n    ");
     }
 }
-

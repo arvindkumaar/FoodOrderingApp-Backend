@@ -2,19 +2,23 @@ package com.upgrad.FoodOrderingApp.api.model;
 
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.upgrad.FoodOrderingApp.api.model.StatesList;
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.validation.annotation.Validated;
 import javax.validation.Valid;
+import javax.validation.constraints.*;
 
 /**
  * StatesListResponse
  */
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2021-05-01T17:43:47.026+05:30")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2021-06-01T17:43:45.582+05:30")
 
-public class StatesListResponse {
+public class StatesListResponse   {
   @JsonProperty("states")
   @Valid
   private List<StatesList> states = null;
@@ -35,7 +39,7 @@ public class StatesListResponse {
   /**
    * List of states
    * @return states
-  **/
+   **/
   @ApiModelProperty(value = "List of states")
 
   @Valid
@@ -50,7 +54,7 @@ public class StatesListResponse {
 
 
   @Override
-  public boolean equals(Object o) {
+  public boolean equals(java.lang.Object o) {
     if (this == o) {
       return true;
     }
@@ -70,7 +74,7 @@ public class StatesListResponse {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class StatesListResponse {\n");
-    
+
     sb.append("    states: ").append(toIndentedString(states)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -80,11 +84,10 @@ public class StatesListResponse {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
+  private String toIndentedString(java.lang.Object o) {
     if (o == null) {
       return "null";
     }
     return o.toString().replace("\n", "\n    ");
   }
 }
-

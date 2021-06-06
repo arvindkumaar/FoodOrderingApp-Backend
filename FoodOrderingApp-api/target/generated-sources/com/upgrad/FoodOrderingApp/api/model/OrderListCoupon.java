@@ -2,18 +2,21 @@ package com.upgrad.FoodOrderingApp.api.model;
 
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.UUID;
 import org.springframework.validation.annotation.Validated;
 import javax.validation.Valid;
+import javax.validation.constraints.*;
 
 /**
  * OrderListCoupon
  */
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2021-05-01T17:43:47.026+05:30")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2021-06-01T17:43:45.582+05:30")
 
-public class OrderListCoupon {
+public class OrderListCoupon   {
   @JsonProperty("id")
   private UUID id = null;
 
@@ -31,7 +34,7 @@ public class OrderListCoupon {
   /**
    * Unique identifier of the coupon in a standard UUID format
    * @return id
-  **/
+   **/
   @ApiModelProperty(value = "Unique identifier of the coupon in a standard UUID format")
 
   @Valid
@@ -52,7 +55,7 @@ public class OrderListCoupon {
   /**
    * Name of the coupon
    * @return couponName
-  **/
+   **/
   @ApiModelProperty(value = "Name of the coupon")
 
 
@@ -72,7 +75,7 @@ public class OrderListCoupon {
   /**
    * Discount percentage of the coupon
    * @return percent
-  **/
+   **/
   @ApiModelProperty(value = "Discount percentage of the coupon")
 
 
@@ -86,7 +89,7 @@ public class OrderListCoupon {
 
 
   @Override
-  public boolean equals(Object o) {
+  public boolean equals(java.lang.Object o) {
     if (this == o) {
       return true;
     }
@@ -95,8 +98,8 @@ public class OrderListCoupon {
     }
     OrderListCoupon orderListCoupon = (OrderListCoupon) o;
     return Objects.equals(this.id, orderListCoupon.id) &&
-        Objects.equals(this.couponName, orderListCoupon.couponName) &&
-        Objects.equals(this.percent, orderListCoupon.percent);
+            Objects.equals(this.couponName, orderListCoupon.couponName) &&
+            Objects.equals(this.percent, orderListCoupon.percent);
   }
 
   @Override
@@ -108,7 +111,7 @@ public class OrderListCoupon {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class OrderListCoupon {\n");
-    
+
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    couponName: ").append(toIndentedString(couponName)).append("\n");
     sb.append("    percent: ").append(toIndentedString(percent)).append("\n");
@@ -120,11 +123,10 @@ public class OrderListCoupon {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
+  private String toIndentedString(java.lang.Object o) {
     if (o == null) {
       return "null";
     }
     return o.toString().replace("\n", "\n    ");
   }
 }
-

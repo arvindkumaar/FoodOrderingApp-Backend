@@ -2,19 +2,23 @@ package com.upgrad.FoodOrderingApp.api.model;
 
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.upgrad.FoodOrderingApp.api.model.RestaurantDetailsResponseAddress;
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.math.BigDecimal;
 import java.util.UUID;
 import org.springframework.validation.annotation.Validated;
 import javax.validation.Valid;
+import javax.validation.constraints.*;
 
 /**
  * RestaurantList
  */
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2021-05-01T17:43:47.026+05:30")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2021-06-01T17:43:45.582+05:30")
 
-public class RestaurantList {
+public class RestaurantList   {
   @JsonProperty("id")
   private UUID id = null;
 
@@ -47,7 +51,7 @@ public class RestaurantList {
   /**
    * Unique identifier of the restaurant in a standard UUID format
    * @return id
-  **/
+   **/
   @ApiModelProperty(value = "Unique identifier of the restaurant in a standard UUID format")
 
   @Valid
@@ -68,7 +72,7 @@ public class RestaurantList {
   /**
    * Name of the restaurant
    * @return restaurantName
-  **/
+   **/
   @ApiModelProperty(value = "Name of the restaurant")
 
 
@@ -88,7 +92,7 @@ public class RestaurantList {
   /**
    * URL for the picture of the restaurant
    * @return photoURL
-  **/
+   **/
   @ApiModelProperty(value = "URL for the picture of the restaurant")
 
 
@@ -108,7 +112,7 @@ public class RestaurantList {
   /**
    * Rating of the restaurant
    * @return customerRating
-  **/
+   **/
   @ApiModelProperty(value = "Rating of the restaurant")
 
   @Valid
@@ -129,7 +133,7 @@ public class RestaurantList {
   /**
    * Average price for two people
    * @return averagePrice
-  **/
+   **/
   @ApiModelProperty(value = "Average price for two people")
 
 
@@ -149,7 +153,7 @@ public class RestaurantList {
   /**
    * Number of customers rated the restaurant
    * @return numberCustomersRated
-  **/
+   **/
   @ApiModelProperty(value = "Number of customers rated the restaurant")
 
 
@@ -169,7 +173,7 @@ public class RestaurantList {
   /**
    * Get address
    * @return address
-  **/
+   **/
   @ApiModelProperty(value = "")
 
   @Valid
@@ -190,7 +194,7 @@ public class RestaurantList {
   /**
    * List of categories
    * @return categories
-  **/
+   **/
   @ApiModelProperty(value = "List of categories")
 
 
@@ -204,7 +208,7 @@ public class RestaurantList {
 
 
   @Override
-  public boolean equals(Object o) {
+  public boolean equals(java.lang.Object o) {
     if (this == o) {
       return true;
     }
@@ -213,13 +217,13 @@ public class RestaurantList {
     }
     RestaurantList restaurantList = (RestaurantList) o;
     return Objects.equals(this.id, restaurantList.id) &&
-        Objects.equals(this.restaurantName, restaurantList.restaurantName) &&
-        Objects.equals(this.photoURL, restaurantList.photoURL) &&
-        Objects.equals(this.customerRating, restaurantList.customerRating) &&
-        Objects.equals(this.averagePrice, restaurantList.averagePrice) &&
-        Objects.equals(this.numberCustomersRated, restaurantList.numberCustomersRated) &&
-        Objects.equals(this.address, restaurantList.address) &&
-        Objects.equals(this.categories, restaurantList.categories);
+            Objects.equals(this.restaurantName, restaurantList.restaurantName) &&
+            Objects.equals(this.photoURL, restaurantList.photoURL) &&
+            Objects.equals(this.customerRating, restaurantList.customerRating) &&
+            Objects.equals(this.averagePrice, restaurantList.averagePrice) &&
+            Objects.equals(this.numberCustomersRated, restaurantList.numberCustomersRated) &&
+            Objects.equals(this.address, restaurantList.address) &&
+            Objects.equals(this.categories, restaurantList.categories);
   }
 
   @Override
@@ -231,7 +235,7 @@ public class RestaurantList {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class RestaurantList {\n");
-    
+
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    restaurantName: ").append(toIndentedString(restaurantName)).append("\n");
     sb.append("    photoURL: ").append(toIndentedString(photoURL)).append("\n");
@@ -248,11 +252,10 @@ public class RestaurantList {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
+  private String toIndentedString(java.lang.Object o) {
     if (o == null) {
       return "null";
     }
     return o.toString().replace("\n", "\n    ");
   }
 }
-

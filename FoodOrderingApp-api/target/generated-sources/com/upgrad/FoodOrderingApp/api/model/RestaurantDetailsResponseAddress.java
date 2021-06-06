@@ -2,18 +2,22 @@ package com.upgrad.FoodOrderingApp.api.model;
 
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.upgrad.FoodOrderingApp.api.model.RestaurantDetailsResponseAddressState;
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.UUID;
 import org.springframework.validation.annotation.Validated;
 import javax.validation.Valid;
+import javax.validation.constraints.*;
 
 /**
  * RestaurantDetailsResponseAddress
  */
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2021-05-01T17:43:47.026+05:30")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2021-06-01T17:43:45.582+05:30")
 
-public class RestaurantDetailsResponseAddress {
+public class RestaurantDetailsResponseAddress   {
   @JsonProperty("id")
   private UUID id = null;
 
@@ -30,7 +34,7 @@ public class RestaurantDetailsResponseAddress {
   private String pincode = null;
 
   @JsonProperty("state")
-  private RDetailsResponseAddressState state = null;
+  private RestaurantDetailsResponseAddressState state = null;
 
   public RestaurantDetailsResponseAddress id(UUID id) {
     this.id = id;
@@ -40,7 +44,7 @@ public class RestaurantDetailsResponseAddress {
   /**
    * Unique identifier of the address in a standard UUID format
    * @return id
-  **/
+   **/
   @ApiModelProperty(value = "Unique identifier of the address in a standard UUID format")
 
   @Valid
@@ -61,7 +65,7 @@ public class RestaurantDetailsResponseAddress {
   /**
    * Flat and building address
    * @return flatBuildingName
-  **/
+   **/
   @ApiModelProperty(value = "Flat and building address")
 
 
@@ -81,7 +85,7 @@ public class RestaurantDetailsResponseAddress {
   /**
    * Locality of the address
    * @return locality
-  **/
+   **/
   @ApiModelProperty(value = "Locality of the address")
 
 
@@ -101,7 +105,7 @@ public class RestaurantDetailsResponseAddress {
   /**
    * City of the address
    * @return city
-  **/
+   **/
   @ApiModelProperty(value = "City of the address")
 
 
@@ -121,7 +125,7 @@ public class RestaurantDetailsResponseAddress {
   /**
    * pincode of the address
    * @return pincode
-  **/
+   **/
   @ApiModelProperty(value = "pincode of the address")
 
 
@@ -133,7 +137,7 @@ public class RestaurantDetailsResponseAddress {
     this.pincode = pincode;
   }
 
-  public RestaurantDetailsResponseAddress state(RDetailsResponseAddressState state) {
+  public RestaurantDetailsResponseAddress state(RestaurantDetailsResponseAddressState state) {
     this.state = state;
     return this;
   }
@@ -141,22 +145,22 @@ public class RestaurantDetailsResponseAddress {
   /**
    * Get state
    * @return state
-  **/
+   **/
   @ApiModelProperty(value = "")
 
   @Valid
 
-  public RDetailsResponseAddressState getState() {
+  public RestaurantDetailsResponseAddressState getState() {
     return state;
   }
 
-  public void setState(RDetailsResponseAddressState state) {
+  public void setState(RestaurantDetailsResponseAddressState state) {
     this.state = state;
   }
 
 
   @Override
-  public boolean equals(Object o) {
+  public boolean equals(java.lang.Object o) {
     if (this == o) {
       return true;
     }
@@ -165,11 +169,11 @@ public class RestaurantDetailsResponseAddress {
     }
     RestaurantDetailsResponseAddress restaurantDetailsResponseAddress = (RestaurantDetailsResponseAddress) o;
     return Objects.equals(this.id, restaurantDetailsResponseAddress.id) &&
-        Objects.equals(this.flatBuildingName, restaurantDetailsResponseAddress.flatBuildingName) &&
-        Objects.equals(this.locality, restaurantDetailsResponseAddress.locality) &&
-        Objects.equals(this.city, restaurantDetailsResponseAddress.city) &&
-        Objects.equals(this.pincode, restaurantDetailsResponseAddress.pincode) &&
-        Objects.equals(this.state, restaurantDetailsResponseAddress.state);
+            Objects.equals(this.flatBuildingName, restaurantDetailsResponseAddress.flatBuildingName) &&
+            Objects.equals(this.locality, restaurantDetailsResponseAddress.locality) &&
+            Objects.equals(this.city, restaurantDetailsResponseAddress.city) &&
+            Objects.equals(this.pincode, restaurantDetailsResponseAddress.pincode) &&
+            Objects.equals(this.state, restaurantDetailsResponseAddress.state);
   }
 
   @Override
@@ -181,7 +185,7 @@ public class RestaurantDetailsResponseAddress {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class RestaurantDetailsResponseAddress {\n");
-    
+
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    flatBuildingName: ").append(toIndentedString(flatBuildingName)).append("\n");
     sb.append("    locality: ").append(toIndentedString(locality)).append("\n");
@@ -196,11 +200,10 @@ public class RestaurantDetailsResponseAddress {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
+  private String toIndentedString(java.lang.Object o) {
     if (o == null) {
       return "null";
     }
     return o.toString().replace("\n", "\n    ");
   }
 }
-

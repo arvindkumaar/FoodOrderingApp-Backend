@@ -2,10 +2,13 @@ package com.upgrad.FoodOrderingApp.api.model;
 
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.upgrad.FoodOrderingApp.api.model.ItemQuantityResponse;
 import com.upgrad.FoodOrderingApp.api.model.OrderListAddress;
 import com.upgrad.FoodOrderingApp.api.model.OrderListCoupon;
 import com.upgrad.FoodOrderingApp.api.model.OrderListCustomer;
 import com.upgrad.FoodOrderingApp.api.model.OrderListPayment;
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -13,14 +16,15 @@ import java.util.List;
 import java.util.UUID;
 import org.springframework.validation.annotation.Validated;
 import javax.validation.Valid;
+import javax.validation.constraints.*;
 
 /**
  * OrderList
  */
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2021-05-01T17:43:47.026+05:30")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2021-06-01T17:43:45.582+05:30")
 
-public class OrderList {
+public class OrderList   {
   @JsonProperty("id")
   private UUID id = null;
 
@@ -57,7 +61,7 @@ public class OrderList {
   /**
    * Unique identifier of the order in a standard UUID format
    * @return id
-  **/
+   **/
   @ApiModelProperty(value = "Unique identifier of the order in a standard UUID format")
 
   @Valid
@@ -78,7 +82,7 @@ public class OrderList {
   /**
    * order bill
    * @return bill
-  **/
+   **/
   @ApiModelProperty(value = "order bill")
 
   @Valid
@@ -99,7 +103,7 @@ public class OrderList {
   /**
    * Get coupon
    * @return coupon
-  **/
+   **/
   @ApiModelProperty(value = "")
 
   @Valid
@@ -120,7 +124,7 @@ public class OrderList {
   /**
    * order discount
    * @return discount
-  **/
+   **/
   @ApiModelProperty(value = "order discount")
 
   @Valid
@@ -141,7 +145,7 @@ public class OrderList {
   /**
    * Full date-time format (yyyy-MM-dd HH:mm)
    * @return date
-  **/
+   **/
   @ApiModelProperty(value = "Full date-time format (yyyy-MM-dd HH:mm)")
 
 
@@ -161,7 +165,7 @@ public class OrderList {
   /**
    * Get payment
    * @return payment
-  **/
+   **/
   @ApiModelProperty(value = "")
 
   @Valid
@@ -182,7 +186,7 @@ public class OrderList {
   /**
    * Get customer
    * @return customer
-  **/
+   **/
   @ApiModelProperty(value = "")
 
   @Valid
@@ -203,7 +207,7 @@ public class OrderList {
   /**
    * Get address
    * @return address
-  **/
+   **/
   @ApiModelProperty(value = "")
 
   @Valid
@@ -232,7 +236,7 @@ public class OrderList {
   /**
    * List of item quantity
    * @return itemQuantities
-  **/
+   **/
   @ApiModelProperty(value = "List of item quantity")
 
   @Valid
@@ -247,7 +251,7 @@ public class OrderList {
 
 
   @Override
-  public boolean equals(Object o) {
+  public boolean equals(java.lang.Object o) {
     if (this == o) {
       return true;
     }
@@ -256,14 +260,14 @@ public class OrderList {
     }
     OrderList orderList = (OrderList) o;
     return Objects.equals(this.id, orderList.id) &&
-        Objects.equals(this.bill, orderList.bill) &&
-        Objects.equals(this.coupon, orderList.coupon) &&
-        Objects.equals(this.discount, orderList.discount) &&
-        Objects.equals(this.date, orderList.date) &&
-        Objects.equals(this.payment, orderList.payment) &&
-        Objects.equals(this.customer, orderList.customer) &&
-        Objects.equals(this.address, orderList.address) &&
-        Objects.equals(this.itemQuantities, orderList.itemQuantities);
+            Objects.equals(this.bill, orderList.bill) &&
+            Objects.equals(this.coupon, orderList.coupon) &&
+            Objects.equals(this.discount, orderList.discount) &&
+            Objects.equals(this.date, orderList.date) &&
+            Objects.equals(this.payment, orderList.payment) &&
+            Objects.equals(this.customer, orderList.customer) &&
+            Objects.equals(this.address, orderList.address) &&
+            Objects.equals(this.itemQuantities, orderList.itemQuantities);
   }
 
   @Override
@@ -275,7 +279,7 @@ public class OrderList {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class OrderList {\n");
-    
+
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    bill: ").append(toIndentedString(bill)).append("\n");
     sb.append("    coupon: ").append(toIndentedString(coupon)).append("\n");
@@ -293,11 +297,10 @@ public class OrderList {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
+  private String toIndentedString(java.lang.Object o) {
     if (o == null) {
       return "null";
     }
     return o.toString().replace("\n", "\n    ");
   }
 }
-

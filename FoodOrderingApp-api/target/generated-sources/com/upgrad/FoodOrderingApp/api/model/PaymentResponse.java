@@ -2,18 +2,21 @@ package com.upgrad.FoodOrderingApp.api.model;
 
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.UUID;
 import org.springframework.validation.annotation.Validated;
 import javax.validation.Valid;
+import javax.validation.constraints.*;
 
 /**
  * PaymentResponse
  */
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2021-05-01T17:43:47.026+05:30")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2021-06-01T17:43:45.582+05:30")
 
-public class PaymentResponse {
+public class PaymentResponse   {
   @JsonProperty("id")
   private UUID id = null;
 
@@ -28,7 +31,7 @@ public class PaymentResponse {
   /**
    * Unique identifier of the payment method in a standard UUID format
    * @return id
-  **/
+   **/
   @ApiModelProperty(value = "Unique identifier of the payment method in a standard UUID format")
 
   @Valid
@@ -49,7 +52,7 @@ public class PaymentResponse {
   /**
    * Name of the payment method
    * @return paymentName
-  **/
+   **/
   @ApiModelProperty(value = "Name of the payment method")
 
 
@@ -63,7 +66,7 @@ public class PaymentResponse {
 
 
   @Override
-  public boolean equals(Object o) {
+  public boolean equals(java.lang.Object o) {
     if (this == o) {
       return true;
     }
@@ -72,7 +75,7 @@ public class PaymentResponse {
     }
     PaymentResponse paymentResponse = (PaymentResponse) o;
     return Objects.equals(this.id, paymentResponse.id) &&
-        Objects.equals(this.paymentName, paymentResponse.paymentName);
+            Objects.equals(this.paymentName, paymentResponse.paymentName);
   }
 
   @Override
@@ -84,7 +87,7 @@ public class PaymentResponse {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class PaymentResponse {\n");
-    
+
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    paymentName: ").append(toIndentedString(paymentName)).append("\n");
     sb.append("}");
@@ -95,11 +98,10 @@ public class PaymentResponse {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
+  private String toIndentedString(java.lang.Object o) {
     if (o == null) {
       return "null";
     }
     return o.toString().replace("\n", "\n    ");
   }
 }
-

@@ -2,18 +2,21 @@ package com.upgrad.FoodOrderingApp.api.model;
 
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.UUID;
 import org.springframework.validation.annotation.Validated;
 import javax.validation.Valid;
+import javax.validation.constraints.*;
 
 /**
  * OrderListCustomer
  */
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2021-05-01T17:43:47.026+05:30")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2021-06-01T17:43:45.582+05:30")
 
-public class OrderListCustomer {
+public class OrderListCustomer   {
   @JsonProperty("id")
   private UUID id = null;
 
@@ -37,7 +40,7 @@ public class OrderListCustomer {
   /**
    * Unique identifier of the customer in a standard UUID format
    * @return id
-  **/
+   **/
   @ApiModelProperty(value = "Unique identifier of the customer in a standard UUID format")
 
   @Valid
@@ -58,7 +61,7 @@ public class OrderListCustomer {
   /**
    * First name of the new customer
    * @return firstName
-  **/
+   **/
   @ApiModelProperty(value = "First name of the new customer")
 
 
@@ -78,7 +81,7 @@ public class OrderListCustomer {
   /**
    * Last name of the new customer
    * @return lastName
-  **/
+   **/
   @ApiModelProperty(value = "Last name of the new customer")
 
 
@@ -98,7 +101,7 @@ public class OrderListCustomer {
   /**
    * Email address of the new customer
    * @return emailAddress
-  **/
+   **/
   @ApiModelProperty(value = "Email address of the new customer")
 
 
@@ -118,7 +121,7 @@ public class OrderListCustomer {
   /**
    * Contact Number of the new customer
    * @return contactNumber
-  **/
+   **/
   @ApiModelProperty(value = "Contact Number of the new customer")
 
 
@@ -132,7 +135,7 @@ public class OrderListCustomer {
 
 
   @Override
-  public boolean equals(Object o) {
+  public boolean equals(java.lang.Object o) {
     if (this == o) {
       return true;
     }
@@ -141,10 +144,10 @@ public class OrderListCustomer {
     }
     OrderListCustomer orderListCustomer = (OrderListCustomer) o;
     return Objects.equals(this.id, orderListCustomer.id) &&
-        Objects.equals(this.firstName, orderListCustomer.firstName) &&
-        Objects.equals(this.lastName, orderListCustomer.lastName) &&
-        Objects.equals(this.emailAddress, orderListCustomer.emailAddress) &&
-        Objects.equals(this.contactNumber, orderListCustomer.contactNumber);
+            Objects.equals(this.firstName, orderListCustomer.firstName) &&
+            Objects.equals(this.lastName, orderListCustomer.lastName) &&
+            Objects.equals(this.emailAddress, orderListCustomer.emailAddress) &&
+            Objects.equals(this.contactNumber, orderListCustomer.contactNumber);
   }
 
   @Override
@@ -156,7 +159,7 @@ public class OrderListCustomer {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class OrderListCustomer {\n");
-    
+
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    firstName: ").append(toIndentedString(firstName)).append("\n");
     sb.append("    lastName: ").append(toIndentedString(lastName)).append("\n");
@@ -170,11 +173,10 @@ public class OrderListCustomer {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
+  private String toIndentedString(java.lang.Object o) {
     if (o == null) {
       return "null";
     }
     return o.toString().replace("\n", "\n    ");
   }
 }
-

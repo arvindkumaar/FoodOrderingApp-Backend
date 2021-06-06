@@ -2,6 +2,8 @@ package com.upgrad.FoodOrderingApp.api.model;
 
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.UUID;
 import org.springframework.validation.annotation.Validated;
@@ -12,9 +14,9 @@ import javax.validation.constraints.*;
  * RestaurantUpdatedResponse
  */
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2021-05-01T17:43:47.026+05:30")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2021-06-01T17:43:45.582+05:30")
 
-public class RestaurantUpdatedResponse {
+public class RestaurantUpdatedResponse   {
   @JsonProperty("id")
   private UUID id = null;
 
@@ -29,7 +31,7 @@ public class RestaurantUpdatedResponse {
   /**
    * Unique identifier of the restaurant in a standard UUID format
    * @return id
-  **/
+   **/
   @ApiModelProperty(required = true, value = "Unique identifier of the restaurant in a standard UUID format")
   @NotNull
 
@@ -51,7 +53,7 @@ public class RestaurantUpdatedResponse {
   /**
    * status of the updated restaurant
    * @return status
-  **/
+   **/
   @ApiModelProperty(required = true, value = "status of the updated restaurant")
   @NotNull
 
@@ -66,7 +68,7 @@ public class RestaurantUpdatedResponse {
 
 
   @Override
-  public boolean equals(Object o) {
+  public boolean equals(java.lang.Object o) {
     if (this == o) {
       return true;
     }
@@ -75,7 +77,7 @@ public class RestaurantUpdatedResponse {
     }
     RestaurantUpdatedResponse restaurantUpdatedResponse = (RestaurantUpdatedResponse) o;
     return Objects.equals(this.id, restaurantUpdatedResponse.id) &&
-        Objects.equals(this.status, restaurantUpdatedResponse.status);
+            Objects.equals(this.status, restaurantUpdatedResponse.status);
   }
 
   @Override
@@ -87,7 +89,7 @@ public class RestaurantUpdatedResponse {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class RestaurantUpdatedResponse {\n");
-    
+
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("}");
@@ -98,11 +100,10 @@ public class RestaurantUpdatedResponse {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
+  private String toIndentedString(java.lang.Object o) {
     if (o == null) {
       return "null";
     }
     return o.toString().replace("\n", "\n    ");
   }
 }
-

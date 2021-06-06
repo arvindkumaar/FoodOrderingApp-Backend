@@ -2,18 +2,20 @@ package com.upgrad.FoodOrderingApp.api.model;
 
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import org.springframework.validation.annotation.Validated;
-
+import javax.validation.Valid;
 import javax.validation.constraints.*;
 
 /**
  * SaveOrderResponse
  */
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2021-05-01T17:43:47.026+05:30")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2021-06-01T17:43:45.582+05:30")
 
-public class SaveOrderResponse {
+public class SaveOrderResponse   {
   @JsonProperty("id")
   private String id = null;
 
@@ -28,7 +30,7 @@ public class SaveOrderResponse {
   /**
    * uuid of the saved order
    * @return id
-  **/
+   **/
   @ApiModelProperty(required = true, value = "uuid of the saved order")
   @NotNull
 
@@ -49,7 +51,7 @@ public class SaveOrderResponse {
   /**
    * message showing the status of the saved address
    * @return status
-  **/
+   **/
   @ApiModelProperty(required = true, value = "message showing the status of the saved address")
   @NotNull
 
@@ -64,7 +66,7 @@ public class SaveOrderResponse {
 
 
   @Override
-  public boolean equals(Object o) {
+  public boolean equals(java.lang.Object o) {
     if (this == o) {
       return true;
     }
@@ -73,7 +75,7 @@ public class SaveOrderResponse {
     }
     SaveOrderResponse saveOrderResponse = (SaveOrderResponse) o;
     return Objects.equals(this.id, saveOrderResponse.id) &&
-        Objects.equals(this.status, saveOrderResponse.status);
+            Objects.equals(this.status, saveOrderResponse.status);
   }
 
   @Override
@@ -85,7 +87,7 @@ public class SaveOrderResponse {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class SaveOrderResponse {\n");
-    
+
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("}");
@@ -96,11 +98,10 @@ public class SaveOrderResponse {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
+  private String toIndentedString(java.lang.Object o) {
     if (o == null) {
       return "null";
     }
     return o.toString().replace("\n", "\n    ");
   }
 }
-

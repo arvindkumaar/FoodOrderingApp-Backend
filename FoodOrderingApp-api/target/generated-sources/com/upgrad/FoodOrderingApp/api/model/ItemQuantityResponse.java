@@ -2,18 +2,21 @@ package com.upgrad.FoodOrderingApp.api.model;
 
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.upgrad.FoodOrderingApp.api.model.ItemQuantityResponseItem;
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import org.springframework.validation.annotation.Validated;
 import javax.validation.Valid;
+import javax.validation.constraints.*;
 
 /**
  * ItemQuantityResponse
  */
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2021-05-01T17:43:47.026+05:30")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2021-06-01T17:43:45.582+05:30")
 
-public class ItemQuantityResponse {
+public class ItemQuantityResponse   {
   @JsonProperty("item")
   private ItemQuantityResponseItem item = null;
 
@@ -31,7 +34,7 @@ public class ItemQuantityResponse {
   /**
    * Get item
    * @return item
-  **/
+   **/
   @ApiModelProperty(value = "")
 
   @Valid
@@ -52,7 +55,7 @@ public class ItemQuantityResponse {
   /**
    * Quantity of item ordered
    * @return quantity
-  **/
+   **/
   @ApiModelProperty(value = "Quantity of item ordered")
 
 
@@ -72,7 +75,7 @@ public class ItemQuantityResponse {
   /**
    * Total price of the item
    * @return price
-  **/
+   **/
   @ApiModelProperty(value = "Total price of the item")
 
 
@@ -86,7 +89,7 @@ public class ItemQuantityResponse {
 
 
   @Override
-  public boolean equals(Object o) {
+  public boolean equals(java.lang.Object o) {
     if (this == o) {
       return true;
     }
@@ -95,8 +98,8 @@ public class ItemQuantityResponse {
     }
     ItemQuantityResponse itemQuantityResponse = (ItemQuantityResponse) o;
     return Objects.equals(this.item, itemQuantityResponse.item) &&
-        Objects.equals(this.quantity, itemQuantityResponse.quantity) &&
-        Objects.equals(this.price, itemQuantityResponse.price);
+            Objects.equals(this.quantity, itemQuantityResponse.quantity) &&
+            Objects.equals(this.price, itemQuantityResponse.price);
   }
 
   @Override
@@ -108,7 +111,7 @@ public class ItemQuantityResponse {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ItemQuantityResponse {\n");
-    
+
     sb.append("    item: ").append(toIndentedString(item)).append("\n");
     sb.append("    quantity: ").append(toIndentedString(quantity)).append("\n");
     sb.append("    price: ").append(toIndentedString(price)).append("\n");
@@ -120,11 +123,10 @@ public class ItemQuantityResponse {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
+  private String toIndentedString(java.lang.Object o) {
     if (o == null) {
       return "null";
     }
     return o.toString().replace("\n", "\n    ");
   }
 }
-

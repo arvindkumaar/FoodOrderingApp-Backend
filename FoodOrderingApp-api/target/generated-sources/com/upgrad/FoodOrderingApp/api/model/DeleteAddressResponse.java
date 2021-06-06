@@ -14,7 +14,7 @@ import javax.validation.constraints.*;
  * DeleteAddressResponse
  */
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2021-05-01T17:43:47.026+05:30")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2021-06-01T17:43:45.582+05:30")
 
 public class DeleteAddressResponse   {
     @JsonProperty("id")
@@ -107,4 +107,3 @@ public class DeleteAddressResponse   {
         return o.toString().replace("\n", "\n    ");
     }
 }
-

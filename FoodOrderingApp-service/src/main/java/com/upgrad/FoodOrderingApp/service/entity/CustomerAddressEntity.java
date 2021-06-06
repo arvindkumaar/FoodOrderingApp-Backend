@@ -1,53 +1,67 @@
 package com.upgrad.FoodOrderingApp.service.entity;
 
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
+
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 @Entity
 @Table(name = "customer_address")
 @NamedQueries(
         {
-                //@NamedQuery(name = "allRestaurants", query = "select r from RestaurantEntity r order by r.customerRating desc"),
+                @NamedQuery(name = "customerAddressByCustomerId", query = "select c from CustomerAddressEntity c where c.customerId = :id"),
         }
 )
-
 public class CustomerAddressEntity implements Serializable {
 
     @Id
     @Column(name = "ID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "CUSTOMER_ID")
-    private CustomerEntity customer;
+    @Column(name = "customer_id")
+    @NotNull
+    private Long customerId;
 
-    @ManyToOne
-    @JoinColumn(name = "ADDRESS_ID")
-    private AddressEntity address;
+    @Column(name = "address_id")
+    @NotNull
+    private Long addressId;
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public CustomerEntity getCustomer() {
-        return customer;
+    public Long getCustomerId() {
+        return customerId;
     }
 
-    public void setCustomer(CustomerEntity customer) {
-        this.customer = customer;
+    public void setCustomerId(Long customerId) {
+        this.customerId = customerId;
     }
 
-    public AddressEntity getAddress() {
-        return address;
+    public Long getAddressId() {
+        return addressId;
     }
 
-    public void setAddress(AddressEntity address) {
-        this.address = address;
+    public void setAddressId(Long addressId) {
+        this.addressId = addressId;
+    }
+
+    @Override
+    public int hashCode() {
+        return new HashCodeBuilder().append(this).hashCode();
+    }
+
+    @Override
+    public String toString() {
+        return ToStringBuilder.reflectionToString(this, ToStringStyle.MULTI_LINE_STYLE);
     }
 
 }

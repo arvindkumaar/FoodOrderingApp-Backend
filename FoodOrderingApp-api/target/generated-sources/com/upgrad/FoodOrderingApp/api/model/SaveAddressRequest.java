@@ -2,18 +2,20 @@ package com.upgrad.FoodOrderingApp.api.model;
 
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import org.springframework.validation.annotation.Validated;
-
+import javax.validation.Valid;
 import javax.validation.constraints.*;
 
 /**
  * SaveAddressRequest
  */
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2021-05-01T17:43:47.026+05:30")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2021-06-01T17:43:45.582+05:30")
 
-public class SaveAddressRequest {
+public class SaveAddressRequest   {
   @JsonProperty("flat_building_name")
   private String flatBuildingName = null;
 
@@ -37,7 +39,7 @@ public class SaveAddressRequest {
   /**
    * Flat and building address
    * @return flatBuildingName
-  **/
+   **/
   @ApiModelProperty(required = true, value = "Flat and building address")
   @NotNull
 
@@ -58,7 +60,7 @@ public class SaveAddressRequest {
   /**
    * Locality of the address
    * @return locality
-  **/
+   **/
   @ApiModelProperty(required = true, value = "Locality of the address")
   @NotNull
 
@@ -79,7 +81,7 @@ public class SaveAddressRequest {
   /**
    * City of the address
    * @return city
-  **/
+   **/
   @ApiModelProperty(required = true, value = "City of the address")
   @NotNull
 
@@ -100,7 +102,7 @@ public class SaveAddressRequest {
   /**
    * pincode of the address
    * @return pincode
-  **/
+   **/
   @ApiModelProperty(required = true, value = "pincode of the address")
   @NotNull
 
@@ -121,7 +123,7 @@ public class SaveAddressRequest {
   /**
    * Id of the state
    * @return stateUuid
-  **/
+   **/
   @ApiModelProperty(required = true, value = "Id of the state")
   @NotNull
 
@@ -136,7 +138,7 @@ public class SaveAddressRequest {
 
 
   @Override
-  public boolean equals(Object o) {
+  public boolean equals(java.lang.Object o) {
     if (this == o) {
       return true;
     }
@@ -145,10 +147,10 @@ public class SaveAddressRequest {
     }
     SaveAddressRequest saveAddressRequest = (SaveAddressRequest) o;
     return Objects.equals(this.flatBuildingName, saveAddressRequest.flatBuildingName) &&
-        Objects.equals(this.locality, saveAddressRequest.locality) &&
-        Objects.equals(this.city, saveAddressRequest.city) &&
-        Objects.equals(this.pincode, saveAddressRequest.pincode) &&
-        Objects.equals(this.stateUuid, saveAddressRequest.stateUuid);
+            Objects.equals(this.locality, saveAddressRequest.locality) &&
+            Objects.equals(this.city, saveAddressRequest.city) &&
+            Objects.equals(this.pincode, saveAddressRequest.pincode) &&
+            Objects.equals(this.stateUuid, saveAddressRequest.stateUuid);
   }
 
   @Override
@@ -160,7 +162,7 @@ public class SaveAddressRequest {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class SaveAddressRequest {\n");
-    
+
     sb.append("    flatBuildingName: ").append(toIndentedString(flatBuildingName)).append("\n");
     sb.append("    locality: ").append(toIndentedString(locality)).append("\n");
     sb.append("    city: ").append(toIndentedString(city)).append("\n");
@@ -174,11 +176,10 @@ public class SaveAddressRequest {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
+  private String toIndentedString(java.lang.Object o) {
     if (o == null) {
       return "null";
     }
     return o.toString().replace("\n", "\n    ");
   }
 }
-

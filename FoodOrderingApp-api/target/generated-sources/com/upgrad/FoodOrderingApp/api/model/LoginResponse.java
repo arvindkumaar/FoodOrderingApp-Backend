@@ -2,18 +2,20 @@ package com.upgrad.FoodOrderingApp.api.model;
 
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import org.springframework.validation.annotation.Validated;
-
+import javax.validation.Valid;
 import javax.validation.constraints.*;
 
 /**
  * LoginResponse
  */
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2021-05-01T17:43:47.026+05:30")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2021-06-01T17:43:45.582+05:30")
 
-public class LoginResponse {
+public class LoginResponse   {
   @JsonProperty("id")
   private String id = null;
 
@@ -40,7 +42,7 @@ public class LoginResponse {
   /**
    * uuid for the customer authentication after he signs in.
    * @return id
-  **/
+   **/
   @ApiModelProperty(required = true, value = "uuid for the customer authentication after he signs in.")
   @NotNull
 
@@ -61,7 +63,7 @@ public class LoginResponse {
   /**
    * message to show the status of the signed in customer
    * @return message
-  **/
+   **/
   @ApiModelProperty(required = true, value = "message to show the status of the signed in customer")
   @NotNull
 
@@ -82,7 +84,7 @@ public class LoginResponse {
   /**
    * First name of the new customer
    * @return firstName
-  **/
+   **/
   @ApiModelProperty(required = true, value = "First name of the new customer")
   @NotNull
 
@@ -103,7 +105,7 @@ public class LoginResponse {
   /**
    * Last name of the new customer
    * @return lastName
-  **/
+   **/
   @ApiModelProperty(required = true, value = "Last name of the new customer")
   @NotNull
 
@@ -124,7 +126,7 @@ public class LoginResponse {
   /**
    * Email address of the new customer
    * @return emailAddress
-  **/
+   **/
   @ApiModelProperty(required = true, value = "Email address of the new customer")
   @NotNull
 
@@ -145,7 +147,7 @@ public class LoginResponse {
   /**
    * Contact Number of the new customer
    * @return contactNumber
-  **/
+   **/
   @ApiModelProperty(required = true, value = "Contact Number of the new customer")
   @NotNull
 
@@ -160,7 +162,7 @@ public class LoginResponse {
 
 
   @Override
-  public boolean equals(Object o) {
+  public boolean equals(java.lang.Object o) {
     if (this == o) {
       return true;
     }
@@ -169,11 +171,11 @@ public class LoginResponse {
     }
     LoginResponse loginResponse = (LoginResponse) o;
     return Objects.equals(this.id, loginResponse.id) &&
-        Objects.equals(this.message, loginResponse.message) &&
-        Objects.equals(this.firstName, loginResponse.firstName) &&
-        Objects.equals(this.lastName, loginResponse.lastName) &&
-        Objects.equals(this.emailAddress, loginResponse.emailAddress) &&
-        Objects.equals(this.contactNumber, loginResponse.contactNumber);
+            Objects.equals(this.message, loginResponse.message) &&
+            Objects.equals(this.firstName, loginResponse.firstName) &&
+            Objects.equals(this.lastName, loginResponse.lastName) &&
+            Objects.equals(this.emailAddress, loginResponse.emailAddress) &&
+            Objects.equals(this.contactNumber, loginResponse.contactNumber);
   }
 
   @Override
@@ -185,7 +187,7 @@ public class LoginResponse {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class LoginResponse {\n");
-    
+
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    message: ").append(toIndentedString(message)).append("\n");
     sb.append("    firstName: ").append(toIndentedString(firstName)).append("\n");
@@ -200,11 +202,10 @@ public class LoginResponse {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
+  private String toIndentedString(java.lang.Object o) {
     if (o == null) {
       return "null";
     }
     return o.toString().replace("\n", "\n    ");
   }
 }
-

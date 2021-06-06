@@ -2,18 +2,21 @@ package com.upgrad.FoodOrderingApp.api.model;
 
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.UUID;
 import org.springframework.validation.annotation.Validated;
 import javax.validation.Valid;
+import javax.validation.constraints.*;
 
 /**
  * OrderListAddressState
  */
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2021-05-01T17:43:47.026+05:30")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2021-06-01T17:43:45.582+05:30")
 
-public class OrderListAddressState {
+public class OrderListAddressState   {
   @JsonProperty("id")
   private UUID id = null;
 
@@ -28,7 +31,7 @@ public class OrderListAddressState {
   /**
    * Unique identifier of the state in a standard UUID format
    * @return id
-  **/
+   **/
   @ApiModelProperty(value = "Unique identifier of the state in a standard UUID format")
 
   @Valid
@@ -49,7 +52,7 @@ public class OrderListAddressState {
   /**
    * Name of the state
    * @return stateName
-  **/
+   **/
   @ApiModelProperty(value = "Name of the state")
 
 
@@ -63,7 +66,7 @@ public class OrderListAddressState {
 
 
   @Override
-  public boolean equals(Object o) {
+  public boolean equals(java.lang.Object o) {
     if (this == o) {
       return true;
     }
@@ -72,7 +75,7 @@ public class OrderListAddressState {
     }
     OrderListAddressState orderListAddressState = (OrderListAddressState) o;
     return Objects.equals(this.id, orderListAddressState.id) &&
-        Objects.equals(this.stateName, orderListAddressState.stateName);
+            Objects.equals(this.stateName, orderListAddressState.stateName);
   }
 
   @Override
@@ -84,7 +87,7 @@ public class OrderListAddressState {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class OrderListAddressState {\n");
-    
+
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    stateName: ").append(toIndentedString(stateName)).append("\n");
     sb.append("}");
@@ -95,11 +98,10 @@ public class OrderListAddressState {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
+  private String toIndentedString(java.lang.Object o) {
     if (o == null) {
       return "null";
     }
     return o.toString().replace("\n", "\n    ");
   }
 }
-

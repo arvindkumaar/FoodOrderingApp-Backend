@@ -3,8 +3,6 @@ package com.upgrad.FoodOrderingApp.api.controller;
 import com.upgrad.FoodOrderingApp.api.model.RestaurantDetailsResponse;
 import com.upgrad.FoodOrderingApp.api.model.RestaurantDetailsResponseAddress;
 import com.upgrad.FoodOrderingApp.api.model.RestaurantDetailsResponseAddressState;
-import com.upgrad.FoodOrderingApp.api.model.RestaurantList;
-import com.upgrad.FoodOrderingApp.service.businness.AddressBusinessService;
 import com.upgrad.FoodOrderingApp.service.businness.RestaurantBusinessService;
 import com.upgrad.FoodOrderingApp.service.businness.StateBusinessService;
 import com.upgrad.FoodOrderingApp.service.entity.AddressEntity;

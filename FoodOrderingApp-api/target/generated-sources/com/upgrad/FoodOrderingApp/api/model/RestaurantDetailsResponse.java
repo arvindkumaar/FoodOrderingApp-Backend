@@ -2,6 +2,8 @@ package com.upgrad.FoodOrderingApp.api.model;
 
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.upgrad.FoodOrderingApp.api.model.CategoryList;
 import com.upgrad.FoodOrderingApp.api.model.RestaurantDetailsResponseAddress;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -11,15 +13,16 @@ import java.util.List;
 import java.util.UUID;
 import org.springframework.validation.annotation.Validated;
 import javax.validation.Valid;
+import javax.validation.constraints.*;
 
 /**
  * Restaurant details
  */
 @ApiModel(description = "Restaurant details")
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2021-05-01T17:43:47.026+05:30")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2021-06-01T17:43:45.582+05:30")
 
-public class RestaurantDetailsResponse {
+public class RestaurantDetailsResponse   {
   @JsonProperty("id")
   private UUID id = null;
 
@@ -53,7 +56,7 @@ public class RestaurantDetailsResponse {
   /**
    * Unique identifier of the restaurant in a standard UUID format
    * @return id
-  **/
+   **/
   @ApiModelProperty(value = "Unique identifier of the restaurant in a standard UUID format")
 
   @Valid
@@ -74,7 +77,7 @@ public class RestaurantDetailsResponse {
   /**
    * Name of the restaurant
    * @return restaurantName
-  **/
+   **/
   @ApiModelProperty(value = "Name of the restaurant")
 
 
@@ -94,7 +97,7 @@ public class RestaurantDetailsResponse {
   /**
    * URL for the picture of the restaurant
    * @return photoURL
-  **/
+   **/
   @ApiModelProperty(value = "URL for the picture of the restaurant")
 
 
@@ -114,7 +117,7 @@ public class RestaurantDetailsResponse {
   /**
    * Rating of the restaurant
    * @return customerRating
-  **/
+   **/
   @ApiModelProperty(value = "Rating of the restaurant")
 
   @Valid
@@ -135,7 +138,7 @@ public class RestaurantDetailsResponse {
   /**
    * Average price for two people
    * @return averagePrice
-  **/
+   **/
   @ApiModelProperty(value = "Average price for two people")
 
 
@@ -155,7 +158,7 @@ public class RestaurantDetailsResponse {
   /**
    * Number of customers rated the restaurant
    * @return numberCustomersRated
-  **/
+   **/
   @ApiModelProperty(value = "Number of customers rated the restaurant")
 
 
@@ -175,7 +178,7 @@ public class RestaurantDetailsResponse {
   /**
    * Get address
    * @return address
-  **/
+   **/
   @ApiModelProperty(value = "")
 
   @Valid
@@ -204,7 +207,7 @@ public class RestaurantDetailsResponse {
   /**
    * List of categories
    * @return categories
-  **/
+   **/
   @ApiModelProperty(value = "List of categories")
 
   @Valid
@@ -219,7 +222,7 @@ public class RestaurantDetailsResponse {
 
 
   @Override
-  public boolean equals(Object o) {
+  public boolean equals(java.lang.Object o) {
     if (this == o) {
       return true;
     }
@@ -228,13 +231,13 @@ public class RestaurantDetailsResponse {
     }
     RestaurantDetailsResponse restaurantDetailsResponse = (RestaurantDetailsResponse) o;
     return Objects.equals(this.id, restaurantDetailsResponse.id) &&
-        Objects.equals(this.restaurantName, restaurantDetailsResponse.restaurantName) &&
-        Objects.equals(this.photoURL, restaurantDetailsResponse.photoURL) &&
-        Objects.equals(this.customerRating, restaurantDetailsResponse.customerRating) &&
-        Objects.equals(this.averagePrice, restaurantDetailsResponse.averagePrice) &&
-        Objects.equals(this.numberCustomersRated, restaurantDetailsResponse.numberCustomersRated) &&
-        Objects.equals(this.address, restaurantDetailsResponse.address) &&
-        Objects.equals(this.categories, restaurantDetailsResponse.categories);
+            Objects.equals(this.restaurantName, restaurantDetailsResponse.restaurantName) &&
+            Objects.equals(this.photoURL, restaurantDetailsResponse.photoURL) &&
+            Objects.equals(this.customerRating, restaurantDetailsResponse.customerRating) &&
+            Objects.equals(this.averagePrice, restaurantDetailsResponse.averagePrice) &&
+            Objects.equals(this.numberCustomersRated, restaurantDetailsResponse.numberCustomersRated) &&
+            Objects.equals(this.address, restaurantDetailsResponse.address) &&
+            Objects.equals(this.categories, restaurantDetailsResponse.categories);
   }
 
   @Override
@@ -246,7 +249,7 @@ public class RestaurantDetailsResponse {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class RestaurantDetailsResponse {\n");
-    
+
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    restaurantName: ").append(toIndentedString(restaurantName)).append("\n");
     sb.append("    photoURL: ").append(toIndentedString(photoURL)).append("\n");
@@ -263,11 +266,10 @@ public class RestaurantDetailsResponse {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
+  private String toIndentedString(java.lang.Object o) {
     if (o == null) {
       return "null";
     }
     return o.toString().replace("\n", "\n    ");
   }
 }
-

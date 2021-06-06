@@ -2,19 +2,22 @@ package com.upgrad.FoodOrderingApp.api.model;
 
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.upgrad.FoodOrderingApp.api.model.OrderListAddressState;
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.UUID;
 import org.springframework.validation.annotation.Validated;
 import javax.validation.Valid;
+import javax.validation.constraints.*;
 
 /**
  * OrderListAddress
  */
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2021-05-01T17:43:47.026+05:30")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2021-06-01T17:43:45.582+05:30")
 
-public class OrderListAddress {
+public class OrderListAddress   {
   @JsonProperty("id")
   private UUID id = null;
 
@@ -41,7 +44,7 @@ public class OrderListAddress {
   /**
    * Unique identifier of the address in a standard UUID format
    * @return id
-  **/
+   **/
   @ApiModelProperty(value = "Unique identifier of the address in a standard UUID format")
 
   @Valid
@@ -62,7 +65,7 @@ public class OrderListAddress {
   /**
    * Flat and building address
    * @return flatBuildingName
-  **/
+   **/
   @ApiModelProperty(value = "Flat and building address")
 
 
@@ -82,7 +85,7 @@ public class OrderListAddress {
   /**
    * Locality of the address
    * @return locality
-  **/
+   **/
   @ApiModelProperty(value = "Locality of the address")
 
 
@@ -102,7 +105,7 @@ public class OrderListAddress {
   /**
    * City of the address
    * @return city
-  **/
+   **/
   @ApiModelProperty(value = "City of the address")
 
 
@@ -122,7 +125,7 @@ public class OrderListAddress {
   /**
    * pincode of the address
    * @return pincode
-  **/
+   **/
   @ApiModelProperty(value = "pincode of the address")
 
 
@@ -142,7 +145,7 @@ public class OrderListAddress {
   /**
    * Get state
    * @return state
-  **/
+   **/
   @ApiModelProperty(value = "")
 
   @Valid
@@ -157,7 +160,7 @@ public class OrderListAddress {
 
 
   @Override
-  public boolean equals(Object o) {
+  public boolean equals(java.lang.Object o) {
     if (this == o) {
       return true;
     }
@@ -166,11 +169,11 @@ public class OrderListAddress {
     }
     OrderListAddress orderListAddress = (OrderListAddress) o;
     return Objects.equals(this.id, orderListAddress.id) &&
-        Objects.equals(this.flatBuildingName, orderListAddress.flatBuildingName) &&
-        Objects.equals(this.locality, orderListAddress.locality) &&
-        Objects.equals(this.city, orderListAddress.city) &&
-        Objects.equals(this.pincode, orderListAddress.pincode) &&
-        Objects.equals(this.state, orderListAddress.state);
+            Objects.equals(this.flatBuildingName, orderListAddress.flatBuildingName) &&
+            Objects.equals(this.locality, orderListAddress.locality) &&
+            Objects.equals(this.city, orderListAddress.city) &&
+            Objects.equals(this.pincode, orderListAddress.pincode) &&
+            Objects.equals(this.state, orderListAddress.state);
   }
 
   @Override
@@ -182,7 +185,7 @@ public class OrderListAddress {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class OrderListAddress {\n");
-    
+
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    flatBuildingName: ").append(toIndentedString(flatBuildingName)).append("\n");
     sb.append("    locality: ").append(toIndentedString(locality)).append("\n");
@@ -197,11 +200,10 @@ public class OrderListAddress {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
+  private String toIndentedString(java.lang.Object o) {
     if (o == null) {
       return "null";
     }
     return o.toString().replace("\n", "\n    ");
   }
 }
-

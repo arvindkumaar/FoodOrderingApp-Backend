@@ -1,69 +1,41 @@
 package com.upgrad.FoodOrderingApp.service.entity;
 
-import org.apache.commons.lang3.builder.HashCodeBuilder;
-import org.apache.commons.lang3.builder.ToStringBuilder;
-import org.apache.commons.lang3.builder.ToStringStyle;
-
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
-import java.io.Serializable;
 
 @Entity
 @Table(name = "address")
-@NamedQueries(
-        {
-                @NamedQuery(name = "addressById", query = "select a from AddressEntity a where a.id = :id"),
-        }
-)
 
-public class AddressEntity implements Serializable {
-
+public class AddressEntity {
     @Id
-    @Column(name = "ID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    @Column(name = "id")
+    private Long id;
 
-    @Column(name = "UUID")
-    @NotNull
-    @Size(max = 200)
+    @Column(name = "uuid")
     private String uuid;
 
-    @Column(name = "FLAT_BUIL_NUMBER")
-    @NotNull
-    @Size(max = 255)
-    private String flatBldgNumber;
+    @Column(name = "flat_buil_number")
+    private String flatBuildingNumber;
 
-    @Column(name = "LOCALITY")
-    @NotNull
-    @Size(max = 255)
+    @Column(name = "locality")
     private String locality;
 
-    @Column(name = "CITY")
-    @NotNull
-    @Size(max = 30)
+    @Column(name = "city")
     private String city;
 
-    @Column(name = "PINCODE")
-    @NotNull
-    @Size(max = 30)
+    @Column(name = "pincode")
     private String pincode;
 
-    @ManyToOne
-    @JoinColumn(name = "STATE_ID")
+    @JoinColumn(name = "id")
+    @Column(name = "state_id")
+    private Long stateId;
+
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
+    @JoinColumn(name = "id", insertable = false, updatable = false)
     private StateEntity state;
 
-    @Column(name = "ACTIVE")
-    @NotNull
-    private Integer active;
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
+    @Column(name = "active")
+    private Long active;
 
     public String getUuid() {
         return uuid;
@@ -73,12 +45,12 @@ public class AddressEntity implements Serializable {
         this.uuid = uuid;
     }
 
-    public String getFlatBldgNumber() {
-        return flatBldgNumber;
+    public String getFlatBuildingNumber() {
+        return flatBuildingNumber;
     }
 
-    public void setFlatBldgNumber(String flatBldgNumber) {
-        this.flatBldgNumber = flatBldgNumber;
+    public void setFlatBuildingNumber(String flatBuildingNumber) {
+        this.flatBuildingNumber = flatBuildingNumber;
     }
 
     public String getLocality() {
@@ -105,6 +77,14 @@ public class AddressEntity implements Serializable {
         this.pincode = pincode;
     }
 
+    public Long getStateId() {
+        return stateId;
+    }
+
+    public void setStateId(Long stateId) {
+        this.stateId = stateId;
+    }
+
     public StateEntity getState() {
         return state;
     }
@@ -113,22 +93,11 @@ public class AddressEntity implements Serializable {
         this.state = state;
     }
 
-    public Integer getActive() {
+    public Long getActive() {
         return active;
     }
 
-    public void setActive(Integer active) {
+    public void setActive(Long active) {
         this.active = active;
     }
-
-    @Override
-    public int hashCode() {
-        return new HashCodeBuilder().append(this).hashCode();
-    }
-
-    @Override
-    public String toString() {
-        return ToStringBuilder.reflectionToString(this, ToStringStyle.MULTI_LINE_STYLE);
-    }
-
 }

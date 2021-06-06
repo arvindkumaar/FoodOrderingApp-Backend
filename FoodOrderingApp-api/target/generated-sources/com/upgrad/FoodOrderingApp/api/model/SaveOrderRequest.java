@@ -2,6 +2,9 @@ package com.upgrad.FoodOrderingApp.api.model;
 
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.upgrad.FoodOrderingApp.api.model.ItemQuantity;
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -15,9 +18,9 @@ import javax.validation.constraints.*;
  * SaveOrderRequest
  */
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2021-05-01T17:43:47.026+05:30")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2021-06-01T17:43:45.582+05:30")
 
-public class SaveOrderRequest {
+public class SaveOrderRequest   {
   @JsonProperty("address_id")
   private String addressId = null;
 
@@ -48,7 +51,7 @@ public class SaveOrderRequest {
   /**
    * uuid of the address
    * @return addressId
-  **/
+   **/
   @ApiModelProperty(required = true, value = "uuid of the address")
   @NotNull
 
@@ -69,7 +72,7 @@ public class SaveOrderRequest {
   /**
    * uuid of the payment
    * @return paymentId
-  **/
+   **/
   @ApiModelProperty(required = true, value = "uuid of the payment")
   @NotNull
 
@@ -91,7 +94,7 @@ public class SaveOrderRequest {
   /**
    * order bill
    * @return bill
-  **/
+   **/
   @ApiModelProperty(required = true, value = "order bill")
   @NotNull
 
@@ -113,7 +116,7 @@ public class SaveOrderRequest {
   /**
    * order discount
    * @return discount
-  **/
+   **/
   @ApiModelProperty(value = "order discount")
 
   @Valid
@@ -134,7 +137,7 @@ public class SaveOrderRequest {
   /**
    * uuid of the coupon
    * @return couponId
-  **/
+   **/
   @ApiModelProperty(value = "uuid of the coupon")
 
   @Valid
@@ -155,7 +158,7 @@ public class SaveOrderRequest {
   /**
    * uuid of the restaurant
    * @return restaurantId
-  **/
+   **/
   @ApiModelProperty(required = true, value = "uuid of the restaurant")
   @NotNull
 
@@ -185,7 +188,7 @@ public class SaveOrderRequest {
   /**
    * List of item quantities.
    * @return itemQuantities
-  **/
+   **/
   @ApiModelProperty(value = "List of item quantities.")
 
   @Valid
@@ -200,7 +203,7 @@ public class SaveOrderRequest {
 
 
   @Override
-  public boolean equals(Object o) {
+  public boolean equals(java.lang.Object o) {
     if (this == o) {
       return true;
     }
@@ -209,12 +212,12 @@ public class SaveOrderRequest {
     }
     SaveOrderRequest saveOrderRequest = (SaveOrderRequest) o;
     return Objects.equals(this.addressId, saveOrderRequest.addressId) &&
-        Objects.equals(this.paymentId, saveOrderRequest.paymentId) &&
-        Objects.equals(this.bill, saveOrderRequest.bill) &&
-        Objects.equals(this.discount, saveOrderRequest.discount) &&
-        Objects.equals(this.couponId, saveOrderRequest.couponId) &&
-        Objects.equals(this.restaurantId, saveOrderRequest.restaurantId) &&
-        Objects.equals(this.itemQuantities, saveOrderRequest.itemQuantities);
+            Objects.equals(this.paymentId, saveOrderRequest.paymentId) &&
+            Objects.equals(this.bill, saveOrderRequest.bill) &&
+            Objects.equals(this.discount, saveOrderRequest.discount) &&
+            Objects.equals(this.couponId, saveOrderRequest.couponId) &&
+            Objects.equals(this.restaurantId, saveOrderRequest.restaurantId) &&
+            Objects.equals(this.itemQuantities, saveOrderRequest.itemQuantities);
   }
 
   @Override
@@ -226,7 +229,7 @@ public class SaveOrderRequest {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class SaveOrderRequest {\n");
-    
+
     sb.append("    addressId: ").append(toIndentedString(addressId)).append("\n");
     sb.append("    paymentId: ").append(toIndentedString(paymentId)).append("\n");
     sb.append("    bill: ").append(toIndentedString(bill)).append("\n");
@@ -242,11 +245,10 @@ public class SaveOrderRequest {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
+  private String toIndentedString(java.lang.Object o) {
     if (o == null) {
       return "null";
     }
     return o.toString().replace("\n", "\n    ");
   }
 }
-

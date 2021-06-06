@@ -13,14 +13,17 @@ public class AddressDao {
     @PersistenceContext
     private EntityManager entityManager;
 
-    public AddressEntity getAddressById(final Integer addressId) {
-        try {
-            return entityManager.createNamedQuery("addressById", AddressEntity.class).setParameter("id", addressId)
-                    .getSingleResult();
-        } catch(NoResultException nre) {
-            return null;
-        }
-
+    public AddressEntity createAddress(AddressEntity AddressEntity) {
+        entityManager.persist(AddressEntity);
+        return AddressEntity;
     }
 
+    public AddressEntity getAllAddressOfCustomerByUuid(final String uuid) {
+        try {
+            return entityManager.createNamedQuery("addressByUuid", AddressEntity.class).setParameter("uuid", uuid)
+                    .getSingleResult();
+        } catch (NoResultException nre) {
+            return null;
+        }
+    }
 }
