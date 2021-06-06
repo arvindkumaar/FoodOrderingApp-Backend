@@ -1,70 +1,58 @@
 package com.upgrad.FoodOrderingApp.service.entity;
 
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import java.io.Serializable;
 
 @Entity
-@Table(name = "order_item")
-@NamedQueries(
-        {
-                @NamedQuery(name = "orderItemById", query = "select o from OrderItemEntity o where o.id=:id")
-        }
-)
-
-public class OrderItemEntity implements Serializable {
+@Table(name = "order-item")
+public class OrderItemEntity {
 
     @Id
     @Column(name = "ID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Integer id;
 
-    @ManyToOne
-    @OnDelete(action = OnDeleteAction.CASCADE)
-    @JoinColumn(name = "ORDER_ID")
-    private OrdersEntity orders;
+    @Column(name = "ORDER_ID")
+    @NotNull
+    private Integer orderId;
 
-    @ManyToOne
-    @OnDelete(action = OnDeleteAction.CASCADE)
-    @JoinColumn(name = "ITEM_ID")
-    private ItemEntity item;
+    @Column(name = "ITEM_ID")
+    @NotNull
+    private Integer itemId;
 
     @Column(name = "QUANTITY")
     @NotNull
     private Integer quantity;
 
-    @Column(name="PRICE")
+    @Column(name = "PRICE")
     @NotNull
     private Integer price;
 
-    public long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public OrdersEntity getOrders() {
-        return orders;
+    public int getOrderId() {
+        return orderId;
     }
 
-    public void setOrders(OrdersEntity orders) {
-        this.orders = orders;
+    public void setOrderId(Integer orderId) {
+        this.orderId = orderId;
     }
 
-    public ItemEntity getItem() {
-        return item;
+    public int getItemId() {
+        return itemId;
     }
 
-    public void setItem(ItemEntity item) {
-        this.item = item;
+    public void setItemId(Integer itemId) {
+        this.itemId = itemId;
     }
 
-    public Integer getQuantity() {
+    public int getQuantity() {
         return quantity;
     }
 
@@ -72,11 +60,13 @@ public class OrderItemEntity implements Serializable {
         this.quantity = quantity;
     }
 
-    public Integer getPrice() {
+    public int getPrice() {
         return price;
     }
 
     public void setPrice(Integer price) {
         this.price = price;
     }
+
+
 }

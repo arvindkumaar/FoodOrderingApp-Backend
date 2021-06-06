@@ -1,37 +1,32 @@
 package com.upgrad.FoodOrderingApp.service.entity;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import java.io.Serializable;
 
 @Entity
 @Table(name = "payment")
-@NamedQueries(
-        {
-                @NamedQuery(name = "allPaymentMethods", query = "select p from PaymentEntity p "),
-                @NamedQuery(name = "paymentById", query = "select p from PaymentEntity p where p.id=:id")
-        }
-)
-
-public class PaymentEntity implements Serializable {
-
+public class PaymentEntity {
     @Id
     @Column(name = "ID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Integer id;
 
     @Column(name = "UUID")
+    @NotNull
     @Size(max = 200)
     private String uuid;
 
-    @Column(name = "PAYMENT_NAME")
+    @Column(name="PAYMENT_NAME")
+    @NotNull
+    @Size(max = 255)
     private String paymentName;
 
-    public long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

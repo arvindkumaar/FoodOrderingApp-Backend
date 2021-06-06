@@ -1,5 +1,6 @@
 package com.upgrad.FoodOrderingApp.service.dao;
 
+import com.upgrad.FoodOrderingApp.service.entity.CategoryEntity;
 import com.upgrad.FoodOrderingApp.service.entity.ItemEntity;
 import org.springframework.stereotype.Repository;
 
@@ -21,15 +22,4 @@ public class ItemDao {
             return null;
         }
     }
-
-    public ItemEntity getItemByUuid(final String itemUuid) {
-        try {
-            return entityManager.createNamedQuery("itemByUuid", ItemEntity.class).setParameter("uuid", itemUuid)
-                    .getSingleResult();
-        } catch (NoResultException nre) {
-            return null;
-        }
-    }
-
-
 }

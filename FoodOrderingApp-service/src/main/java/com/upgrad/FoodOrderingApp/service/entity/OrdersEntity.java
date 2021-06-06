@@ -1,78 +1,54 @@
 package com.upgrad.FoodOrderingApp.service.entity;
 
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import java.io.Serializable;
-import java.math.BigDecimal;
-import java.time.ZonedDateTime;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "orders")
-@NamedQueries(
-        {
-                @NamedQuery(name = "ordersByUuid",query="select o from OrdersEntity o where o.uuid=:uuid"),
-                @NamedQuery(name = "ordersById", query = "select o from OrdersEntity o where o.id=:id"),
-                @NamedQuery(name = "ordersByCustomer", query = "select o from OrdersEntity o where o.customer=:customer order by o.date desc"),
-        }
-)
-
-
-public class OrdersEntity implements Serializable {
+public class OrdersEntity {
 
     @Id
     @Column(name = "ID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Integer id;
 
     @Column(name = "UUID")
+    @NotNull
     @Size(max = 200)
     private String uuid;
 
-    @Column(name="BILL")
+    @Column(name = "BILL")
     @NotNull
-    private BigDecimal bill;
+    private Number bill;
 
-    @ManyToOne
-    @OnDelete(action = OnDeleteAction.CASCADE)
-    @JoinColumn(name = "COUPON_ID")
-    private CouponEntity coupon;
+    @Column(name = "DISCOUNT")
+    private Number discount;
 
-    @Column(name="DISCOUNT")
-    private BigDecimal discount;
+    @Column(name = "DATE")
+    private LocalDateTime date;
 
-    @Column(name="DATE")
-    @NotNull
-    private ZonedDateTime date;
+    @OneToOne
+    private CouponEntity couponEntity;
 
-    @ManyToOne
-    @OnDelete(action = OnDeleteAction.CASCADE)
-    @JoinColumn(name = "PAYMENT_ID")
-    private PaymentEntity payment;
+    @OneToOne
+    private PaymentEntity paymentEntity;
 
-    @ManyToOne
-    @OnDelete(action = OnDeleteAction.CASCADE)
-    @JoinColumn(name = "CUSTOMER_ID")
-    private CustomerEntity customer;
+    @OneToOne
+    private CustomerEntity customerEntity;
 
-    @ManyToOne
-    @OnDelete(action = OnDeleteAction.CASCADE)
-    @JoinColumn(name = "ADDRESS_ID")
-    private AddressEntity address;
+    @OneToOne
+    private AddressEntity addressEntity;
 
-    @ManyToOne
-    @OnDelete(action = OnDeleteAction.CASCADE)
-    @JoinColumn(name = "RESTAURANT_ID")
-    private RestaurantEntity restaurant;
+    @OneToOne
+    private RestaurantEntity restaurantEntity;
 
-    public long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -84,67 +60,67 @@ public class OrdersEntity implements Serializable {
         this.uuid = uuid;
     }
 
-    public BigDecimal getBill() {
+    public Number getBill() {
         return bill;
     }
 
-    public void setBill(BigDecimal bill) {
+    public void setBill(Number bill) {
         this.bill = bill;
     }
 
-    public CouponEntity getCoupon() {
-        return coupon;
-    }
-
-    public void setCoupon(CouponEntity coupon) {
-        this.coupon = coupon;
-    }
-
-    public BigDecimal getDiscount() {
+    public Number getDiscount() {
         return discount;
     }
 
-    public void setDiscount(BigDecimal discount) {
+    public void setDiscount(Number discount) {
         this.discount = discount;
     }
 
-    public ZonedDateTime getDate() {
+    public LocalDateTime getDate() {
         return date;
     }
 
-    public void setDate(ZonedDateTime date) {
+    public void setDate(LocalDateTime date) {
         this.date = date;
     }
 
-    public PaymentEntity getPayment() {
-        return payment;
+    public CouponEntity getCouponEntity() {
+        return couponEntity;
     }
 
-    public void setPayment(PaymentEntity payment) {
-        this.payment = payment;
+    public void setCouponEntity(CouponEntity couponEntity) {
+        this.couponEntity = couponEntity;
     }
 
-    public CustomerEntity getCustomer() {
-        return customer;
+    public PaymentEntity getPaymentEntity() {
+        return paymentEntity;
     }
 
-    public void setCustomer(CustomerEntity customer) {
-        this.customer = customer;
+    public void setPaymentEntity(PaymentEntity paymentEntity) {
+        this.paymentEntity = paymentEntity;
     }
 
-    public AddressEntity getAddress() {
-        return address;
+    public CustomerEntity getCustomerEntity() {
+        return customerEntity;
     }
 
-    public void setAddress(AddressEntity address) {
-        this.address = address;
+    public void setCustomerEntity(CustomerEntity customerEntity) {
+        this.customerEntity = customerEntity;
     }
 
-    public RestaurantEntity getRestaurant() {
-        return restaurant;
+    public AddressEntity getAddressEntity() {
+        return addressEntity;
     }
 
-    public void setRestaurant(RestaurantEntity restaurant) {
-        this.restaurant = restaurant;
+    public void setAddressEntity(AddressEntity addressEntity) {
+        this.addressEntity = addressEntity;
+    }
+
+    public RestaurantEntity getRestaurantEntity() {
+        return restaurantEntity;
+    }
+
+    public void setRestaurantEntity(RestaurantEntity restaurantEntity) {
+        this.restaurantEntity = restaurantEntity;
     }
 }

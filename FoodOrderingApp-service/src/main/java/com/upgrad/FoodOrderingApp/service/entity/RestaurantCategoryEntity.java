@@ -1,42 +1,40 @@
 package com.upgrad.FoodOrderingApp.service.entity;
 
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
-
 import javax.persistence.*;
-import java.io.Serializable;
 
 @Entity
 @Table(name = "restaurant_category")
-@NamedQueries(
-        {
-                @NamedQuery(name = "restaurantCategroryById", query = "select r from RestaurantCategoryEntity r where r.id=:id")
-        }
-)
-
-public class RestaurantCategoryEntity implements Serializable {
-
+@NamedQueries({
+        @NamedQuery(name = "findRestaurantByCategoryId", query = "select r from RestaurantCategoryEntity r where category.uuid = :categoryUUID "),
+})
+public class RestaurantCategoryEntity {
     @Id
     @Column(name = "ID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Integer id;
 
-    @ManyToOne
-    @OnDelete(action = OnDeleteAction.CASCADE)
-    @JoinColumn(name = "RESTAURANT_ID")
-    private RestaurantEntity restaurant;
-
-    @ManyToOne
-    @OnDelete(action = OnDeleteAction.CASCADE)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "CATEGORY_ID")
     private CategoryEntity category;
 
-    public long getId() {
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "RESTAURANT_ID")
+    private RestaurantEntity restaurant;
+
+    public Integer getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Integer id) {
         this.id = id;
+    }
+
+    public CategoryEntity getCategory() {
+        return category;
+    }
+
+    public void setCategory(CategoryEntity category) {
+        this.category = category;
     }
 
     public RestaurantEntity getRestaurant() {
@@ -47,11 +45,4 @@ public class RestaurantCategoryEntity implements Serializable {
         this.restaurant = restaurant;
     }
 
-    public CategoryEntity getCategory() {
-        return category;
-    }
-
-    public void setCategory(CategoryEntity category) {
-        this.category = category;
-    }
 }
